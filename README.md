@@ -2,6 +2,8 @@
 
 Generate standalone, schema-driven faceted browsers for any tabular JSON dataset.
 
+> ⚠️ **LinkML Schema Support**: Currently uses custom JSON schemas. Native LinkML schema support is planned - see our [LinkML Integration Roadmap](docs/linkml_integration.md) for details and timeline.
+
 ## Overview
 
 LinkML Browser allows you to quickly create interactive, searchable web interfaces for browsing JSON data. It generates a standalone HTML/JavaScript application that provides:
