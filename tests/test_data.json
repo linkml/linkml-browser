@@ -1,0 +1,62 @@
+[
+  {
+    "id": "book1",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": ["Fiction", "Classic"],
+    "publication_year": 1925,
+    "publisher": "Charles Scribner's Sons",
+    "pages": 180,
+    "rating": 4.2,
+    "language": "English",
+    "description": "A classic American novel about the Jazz Age and the American Dream."
+  },
+  {
+    "id": "book2", 
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": ["Fiction", "Classic", "Drama"],
+    "publication_year": 1960,
+    "publisher": "J.B. Lippincott & Co.",
+    "pages": 281,
+    "rating": 4.3,
+    "language": "English",
+    "description": "A novel about racial injustice and moral growth in the American South."
+  },
+  {
+    "id": "book3",
+    "title": "1984",
+    "author": "George Orwell", 
+    "genre": ["Fiction", "Dystopian", "Political"],
+    "publication_year": 1949,
+    "publisher": "Secker & Warburg",
+    "pages": 328,
+    "rating": 4.1,
+    "language": "English",
+    "description": "A dystopian novel about totalitarian government and surveillance."
+  },
+  {
+    "id": "book4",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genre": ["Fiction", "Romance", "Classic"],
+    "publication_year": 1813,
+    "publisher": "T. Egerton",
+    "pages": 432,
+    "rating": 4.0,
+    "language": "English",
+    "description": "A romantic novel about manners, marriage, and society in Georgian England."
+  },
+  {
+    "id": "book5",
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": ["Fiction", "Coming-of-age"],
+    "publication_year": 1951,
+    "publisher": "Little, Brown and Company",
+    "pages": 277,
+    "rating": 3.8,
+    "language": "English",
+    "description": "A coming-of-age story about teenage rebellion and alienation."
+  }
+]
