@@ -1,6 +1,5 @@
 """Unit tests for LinkML Browser generator functionality."""
 
-import json
 import tempfile
 from pathlib import Path
 

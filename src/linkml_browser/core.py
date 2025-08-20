@@ -3,7 +3,7 @@
 import json
 import shutil
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 
 
 class BrowserGenerator:
@@ -35,12 +35,12 @@ class BrowserGenerator:
             raise ValueError("Cannot infer schema from empty data")
         
         # Get all unique keys from all items
-        all_keys = set()
+        all_keys: Set[str] = set()
         for item in self.data:
             all_keys.update(item.keys())
         
         # Analyze field types from first few items
-        field_info = {}
+        field_info: Dict[str, Dict[str, Any]] = {}
         sample_size = min(100, len(self.data))
         
         for key in all_keys:
@@ -70,7 +70,7 @@ class BrowserGenerator:
                         field_info[key]['unique_values'].add(value)
         
         # Build schema
-        schema = {
+        schema: Dict[str, Any] = {
             "title": title,
             "description": description,
             "searchPlaceholder": "Search...",
@@ -103,7 +103,7 @@ class BrowserGenerator:
                         int_values = [int(v) for v in info['unique_values'] if v]
                         if len(int_values) == len(info['unique_values']):
                             facet_type = "integer"
-                    except:
+                    except ValueError:
                         pass
                 
                 schema["facets"].append({

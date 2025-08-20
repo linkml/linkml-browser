@@ -106,7 +106,7 @@ def init_schema(
     save_schema(schema, output_file)
     
     typer.echo(f"\n✅ Schema written to: {output_file}")
-    typer.echo(f"Edit this file to customize facets, search fields, and display options.")
+    typer.echo("Edit this file to customize facets, search fields, and display options.")
     typer.echo(f"Then run: linkml-browser deploy {data_file} output/ --schema {output_file}")
 
 

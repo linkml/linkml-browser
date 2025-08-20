@@ -13,6 +13,13 @@ dependencies = [
     "typer>=0.9.0",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
 [project.scripts]
 linkml-browser = "linkml_browser:main"
 
