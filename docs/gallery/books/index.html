@@ -12,66 +12,87 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(170deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #fafafa;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .header {
-            background: linear-gradient(45deg, #2d3748, #4a5568);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 30px;
-            text-align: center;
+            padding: 40px 30px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(35deg);
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            position: relative;
         }
 
         .header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
+            opacity: 0.95;
+            font-size: 1rem;
+            font-weight: 400;
+            position: relative;
         }
 
         .search-container {
-            padding: 30px;
-            background: #f7fafc;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 30px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
 
         .search-box {
             flex: 1;
-            padding: 15px 20px;
-            font-size: 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
             outline: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            background: white;
         }
 
         .search-box:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .performance-info {
-            font-size: 14px;
-            color: #666;
+            font-size: 13px;
+            color: #6b7280;
             font-weight: 500;
+            font-family: 'SF Mono', 'Monaco', monospace;
         }
 
         .main-content {
@@ -80,45 +101,49 @@
         }
 
         .sidebar {
-            width: 300px;
-            background: #f7fafc;
-            padding: 30px;
-            border-right: 1px solid #e2e8f0;
+            width: 280px;
+            background: #f9fafb;
+            padding: 24px;
+            border-right: 1px solid #e5e7eb;
         }
 
         .facet-group {
-            margin-bottom: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
             overflow: hidden;
+            background: white;
         }
 
         .facet-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px;
-            background: #f7fafc;
+            padding: 12px 16px;
+            background: white;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.15s ease;
+            border-bottom: 1px solid #f3f4f6;
         }
 
         .facet-header:hover {
-            background: #edf2f7;
+            background: #f9fafb;
         }
 
         .facet-title {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #2d3748;
+            color: #111827;
             margin: 0;
+            letter-spacing: -0.2px;
         }
 
         .facet-toggle {
-            font-size: 1.2rem;
-            color: #667eea;
+            font-size: 0.9rem;
+            color: #10b981;
             transition: transform 0.2s ease;
+            font-weight: 600;
         }
 
         .facet-toggle.collapsed {
@@ -141,76 +166,84 @@
         .facet-item {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
+            margin-bottom: 6px;
+            padding: 7px 12px;
+            border-radius: 4px;
+            transition: all 0.15s ease;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .facet-item:hover {
-            background: #e2e8f0;
+            background: #f3f4f6;
         }
 
         .facet-item.active {
-            background: #667eea;
+            background: #10b981;
             color: white;
         }
 
         .facet-checkbox {
             margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            accent-color: #667eea;
+            width: 16px;
+            height: 16px;
+            accent-color: #10b981;
+            cursor: pointer;
         }
 
         .facet-count {
             margin-left: auto;
-            background: #e2e8f0;
-            color: #4a5568;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 12px;
+            background: #f3f4f6;
+            color: #6b7280;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 11px;
             font-weight: 600;
+            min-width: 24px;
+            text-align: center;
         }
 
         .facet-item.active .facet-count {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
             color: white;
         }
 
         .results-area {
             flex: 1;
-            padding: 30px;
+            padding: 24px;
+            background: white;
         }
 
         .results-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .results-count {
-            font-size: 1.1rem;
-            color: #4a5568;
+            font-size: 1rem;
+            color: #374151;
+            font-weight: 500;
         }
 
         .clear-filters {
-            background: #e53e3e;
+            background: #ef4444;
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 7px 14px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s ease;
         }
 
         .clear-filters:hover {
-            background: #c53030;
+            background: #dc2626;
+            transform: translateY(-1px);
         }
 
         .results-grid {
@@ -220,18 +253,19 @@
         }
 
         .result-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            background: #fafafa;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
             overflow: hidden;
-            border: 1px solid #e2e8f0;
-            padding: 20px;
+            border: 1px solid #e5e7eb;
+            padding: 16px;
         }
 
         .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #10b981;
         }
 
         .field-display {
@@ -240,14 +274,18 @@
 
         .field-label {
             font-weight: 600;
-            color: #4a5568;
+            color: #6b7280;
             margin-right: 8px;
             display: inline-block;
             min-width: 80px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .field-value {
-            color: #2d3748;
+            color: #111827;
+            font-size: 0.9rem;
         }
 
         .array-values {
@@ -258,12 +296,13 @@
         }
 
         .array-item {
-            background: #e2e8f0;
-            color: #4a5568;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
             padding: 3px 8px;
-            border-radius: 12px;
+            border-radius: 3px;
             font-size: 11px;
-            font-weight: 500;
+            font-weight: 600;
+            border: 1px solid #6ee7b7;
         }
 
         .no-results {
@@ -273,46 +312,136 @@
             grid-column: 1 / -1;
         }
 
-        /* Numeric filter styles */
-        .numeric-filter-container {
-            padding: 10px 0;
-        }
-
-        .numeric-range-info {
-            font-size: 12px;
-            color: #718096;
-            margin-bottom: 12px;
+        .load-more-container {
+            grid-column: 1 / -1;
             text-align: center;
+            padding: 20px;
         }
 
-        .numeric-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .numeric-input {
-            width: 80px;
-            padding: 8px 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+        .load-more-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            cursor: pointer;
             font-size: 14px;
-            text-align: center;
-            outline: none;
+            font-weight: 600;
             transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .load-more-info {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .facet-show-more {
+            padding: 8px 12px;
+            margin-top: 8px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #10b981;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.15s ease;
+        }
+
+        .facet-show-more:hover {
+            background: #e5e7eb;
+        }
+
+        /* Numeric filter styles - Range Slider */
+        .numeric-filter-container {
+            padding: 15px 10px 25px 10px;
+        }
+
+        .range-slider-wrapper {
+            position: relative;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .range-slider-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            transform: translateY(-50%);
+        }
+
+        .range-slider-range {
+            position: absolute;
+            top: 50%;
+            height: 6px;
+            background: #10b981;
+            border-radius: 3px;
+            transform: translateY(-50%);
+        }
+
+        .range-slider-handle {
+            position: absolute;
+            top: 50%;
+            width: 18px;
+            height: 18px;
             background: white;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            z-index: 2;
+            transition: box-shadow 0.15s ease, transform 0.1s ease;
         }
 
-        .numeric-input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        .range-slider-handle:hover {
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
         }
 
-        .numeric-separator {
-            color: #718096;
+        .range-slider-handle:active {
+            cursor: grabbing;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25);
+        }
+
+        .range-slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .range-slider-label {
             font-weight: 500;
-            font-size: 16px;
+        }
+
+        .range-slider-clear {
+            position: absolute;
+            top: -2px;
+            right: 0;
+            font-size: 12px;
+            color: #10b981;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px 6px;
+            font-weight: 500;
+        }
+
+        .range-slider-clear:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -368,12 +497,19 @@
                 this.schema = schema;
                 this.currentFilters = {};
                 this.currentQuery = '';
-                
+
                 // Track collapsed facets
                 this.collapsedFacets = new Set();
-                
-                // Track slider timeout
-                this.sliderTimeout = null;
+
+                // Pagination settings
+                this.itemsPerPage = schema.itemsPerPage || 50;
+                this.displayedCount = this.itemsPerPage;
+                this.currentFilteredData = [];
+
+                // Facet pagination settings
+                this.facetItemsToShow = schema.facetItemsToShow || 10;
+                this.expandedFacets = new Set();
+                this.currentFacetCounts = null;
                 
                 try {
                     console.log('📚 Building search index...');
@@ -508,23 +644,147 @@
                         this.handleFacetToggle(e.target.closest('.facet-header'));
                     }
                 });
-                
-                // Add numeric input event listeners
-                document.addEventListener('input', (e) => {
-                    if (e.target.classList.contains('numeric-input')) {
-                        this.handleNumericInputChange(e.target);
-                    }
-                });
-                
-                document.addEventListener('change', (e) => {
-                    if (e.target.classList.contains('numeric-input')) {
-                        this.handleNumericInputChange(e.target);
-                    }
-                });
-                
+
                 document.getElementById('clearFilters').addEventListener('click', () => {
                     this.clearAllFilters();
                 });
+
+                // Range slider event handlers
+                this.setupRangeSliderEvents();
+
+                // Load more button (delegated since it's dynamically created)
+                document.addEventListener('click', (e) => {
+                    if (e.target.id === 'loadMoreBtn') {
+                        this.loadMore();
+                    }
+                    // Facet show more button
+                    if (e.target.classList.contains('facet-show-more')) {
+                        const field = e.target.dataset.field;
+                        if (this.expandedFacets.has(field)) {
+                            this.expandedFacets.delete(field);
+                        } else {
+                            this.expandedFacets.add(field);
+                        }
+                        // Re-render facets with cached counts
+                        if (this.currentFacetCounts) {
+                            this.renderFacets(this.currentFacetCounts);
+                        }
+                    }
+                    // Range slider clear button
+                    if (e.target.classList.contains('range-slider-clear')) {
+                        const field = e.target.dataset.field;
+                        delete this.currentFilters[field];
+                        this.search();
+                    }
+                });
+            }
+
+            setupRangeSliderEvents() {
+                let activeHandle = null;
+                let activeWrapper = null;
+
+                const getValueFromPosition = (wrapper, clientX) => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const min = parseInt(wrapper.dataset.min);
+                    const max = parseInt(wrapper.dataset.max);
+                    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+                    return Math.round(min + percent * (max - min));
+                };
+
+                const updateSliderVisual = (wrapper, minVal, maxVal) => {
+                    const min = parseInt(wrapper.dataset.min);
+                    const max = parseInt(wrapper.dataset.max);
+                    const range = max - min;
+                    const minPercent = range > 0 ? ((minVal - min) / range) * 100 : 0;
+                    const maxPercent = range > 0 ? ((maxVal - min) / range) * 100 : 100;
+
+                    const rangeEl = wrapper.querySelector('.range-slider-range');
+                    const minHandle = wrapper.querySelector('.range-slider-handle-min');
+                    const maxHandle = wrapper.querySelector('.range-slider-handle-max');
+                    const minLabel = wrapper.parentElement.querySelector('.range-slider-label-min');
+                    const maxLabel = wrapper.parentElement.querySelector('.range-slider-label-max');
+
+                    rangeEl.style.left = minPercent + '%';
+                    rangeEl.style.right = (100 - maxPercent) + '%';
+                    minHandle.style.left = minPercent + '%';
+                    maxHandle.style.left = maxPercent + '%';
+                    minLabel.textContent = minVal;
+                    maxLabel.textContent = maxVal;
+                };
+
+                const handleMove = (clientX) => {
+                    if (!activeHandle || !activeWrapper) return;
+
+                    const field = activeWrapper.dataset.field;
+                    const min = parseInt(activeWrapper.dataset.min);
+                    const max = parseInt(activeWrapper.dataset.max);
+                    const handleType = activeHandle.dataset.type;
+                    const newValue = getValueFromPosition(activeWrapper, clientX);
+
+                    if (!this.currentFilters[field]) {
+                        this.currentFilters[field] = { min, max };
+                    }
+
+                    if (handleType === 'min') {
+                        this.currentFilters[field].min = Math.min(newValue, this.currentFilters[field].max);
+                    } else {
+                        this.currentFilters[field].max = Math.max(newValue, this.currentFilters[field].min);
+                    }
+
+                    updateSliderVisual(activeWrapper, this.currentFilters[field].min, this.currentFilters[field].max);
+                };
+
+                const handleEnd = () => {
+                    if (activeHandle && activeWrapper) {
+                        const field = activeWrapper.dataset.field;
+                        const min = parseInt(activeWrapper.dataset.min);
+                        const max = parseInt(activeWrapper.dataset.max);
+
+                        // If range is back to full, clear the filter
+                        if (this.currentFilters[field] &&
+                            this.currentFilters[field].min === min &&
+                            this.currentFilters[field].max === max) {
+                            delete this.currentFilters[field];
+                        }
+
+                        this.search();
+                    }
+                    activeHandle = null;
+                    activeWrapper = null;
+                };
+
+                // Mouse events
+                document.addEventListener('mousedown', (e) => {
+                    if (e.target.classList.contains('range-slider-handle')) {
+                        activeHandle = e.target;
+                        activeWrapper = e.target.closest('.range-slider-wrapper');
+                        e.preventDefault();
+                    }
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (activeHandle) {
+                        handleMove(e.clientX);
+                    }
+                });
+
+                document.addEventListener('mouseup', handleEnd);
+
+                // Touch events for mobile
+                document.addEventListener('touchstart', (e) => {
+                    if (e.target.classList.contains('range-slider-handle')) {
+                        activeHandle = e.target;
+                        activeWrapper = e.target.closest('.range-slider-wrapper');
+                    }
+                }, { passive: true });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (activeHandle && e.touches.length > 0) {
+                        handleMove(e.touches[0].clientX);
+                    }
+                }, { passive: true });
+
+                document.addEventListener('touchend', handleEnd);
             }
             
             handleFacetClick(facetItem) {
@@ -572,60 +832,7 @@
                 document.getElementById('searchBox').value = '';
                 this.search();
             }
-            
-            handleNumericInputChange(element) {
-                const field = element.dataset.field;
-                const type = element.dataset.type;
-                const value = parseInt(element.value);
-                
-                if (!this.currentFilters[field]) {
-                    const facetConfig = this.schema.facets.find(f => f.field === field);
-                    if (!facetConfig || facetConfig.type !== 'integer') return;
-                    
-                    // Initialize with full range
-                    const counts = this.facetIndex[field] || new Map();
-                    const values = Array.from(counts.keys()).map(k => parseInt(k)).filter(v => !isNaN(v));
-                    if (values.length === 0) return;
-                    
-                    const minValue = Math.min(...values);
-                    const maxValue = Math.max(...values);
-                    this.currentFilters[field] = { min: minValue, max: maxValue };
-                }
-                
-                // Update the filter value
-                this.currentFilters[field][type] = value;
-                
-                // Ensure min doesn't exceed max
-                if (this.currentFilters[field].min > this.currentFilters[field].max) {
-                    if (type === 'min') {
-                        this.currentFilters[field].max = value;
-                    } else {
-                        this.currentFilters[field].min = value;
-                    }
-                }
-                
-                // Update UI to reflect the change
-                this.updateSliderUI(field);
-                
-                // Debounce the search
-                clearTimeout(this.sliderTimeout);
-                this.sliderTimeout = setTimeout(() => {
-                    this.search();
-                }, 150);
-            }
-            
-            updateSliderUI(field) {
-                const range = this.currentFilters[field];
-                if (!range) return;
-                
-                // Update all numeric inputs for this field
-                const inputs = document.querySelectorAll(`input[data-field="${field}"]`);
-                inputs.forEach(input => {
-                    const type = input.dataset.type;
-                    input.value = range[type];
-                });
-            }
-            
+
             search() {
                 const startTime = performance.now();
                 
@@ -718,16 +925,26 @@
                 
                 // Get actual data objects
                 const filteredData = Array.from(resultIndices).map(idx => this.originalData[idx]);
-                
-                // Generate facet counts for current result set
-                const facetCounts = this.generateFacetCounts(resultIndices);
-                
+
+                // Store for pagination and reset displayed count on new search
+                this.currentFilteredData = filteredData;
+                this.displayedCount = this.itemsPerPage;
+
+                // Generate facet counts for current result set and cache them
+                this.currentFacetCounts = this.generateFacetCounts(resultIndices);
+                const facetCounts = this.currentFacetCounts;
+
                 const endTime = performance.now();
-                document.getElementById('performanceInfo').textContent = 
+                document.getElementById('performanceInfo').textContent =
                     `Search: ${(endTime - startTime).toFixed(2)}ms`;
-                
-                this.renderResults(filteredData);
+
+                this.renderResults();
                 this.renderFacets(facetCounts);
+            }
+
+            loadMore() {
+                this.displayedCount += this.itemsPerPage;
+                this.renderResults();
             }
             
             generateFacetCounts(resultIndices) {
@@ -769,13 +986,16 @@
                 return counts;
             }
             
-            renderResults(items) {
+            renderResults() {
+                const items = this.currentFilteredData;
                 const resultsCount = document.getElementById('resultsCount');
                 const resultsGrid = document.getElementById('resultsGrid');
-                
-                resultsCount.textContent = `${items.length} items found`;
-                
-                if (items.length === 0) {
+
+                const totalCount = items.length;
+                const showingCount = Math.min(this.displayedCount, totalCount);
+                resultsCount.textContent = `Showing ${showingCount} of ${totalCount} items`;
+
+                if (totalCount === 0) {
                     resultsGrid.innerHTML = `
                         <div class="no-results">
                             <div style="font-size: 4rem; margin-bottom: 20px;">🔍</div>
@@ -785,16 +1005,19 @@
                     `;
                     return;
                 }
-                
+
+                // Only render up to displayedCount items
+                const itemsToRender = items.slice(0, this.displayedCount);
+
                 // Generic rendering based on schema displayFields
-                resultsGrid.innerHTML = items.map(item => {
+                let html = itemsToRender.map(item => {
                     const fieldsHtml = this.schema.displayFields.map(fieldConfig => {
                         const value = item[fieldConfig.field];
-                        
+
                         if (value === undefined || value === null) {
                             return '';
                         }
-                        
+
                         if (fieldConfig.type === 'array') {
                             if (Array.isArray(value)) {
                                 return `
@@ -818,14 +1041,22 @@
                             if (fieldConfig.format === 'currency') {
                                 displayValue = `${value}`;
                             }
-                            
+
                             // Generic handling for CURIE type fields
                             if (fieldConfig.type === 'curie' && value.includes(':')) {
                                 // Create hyperlink for any CURIE (Compact URI)
                                 const curieUrl = `https://bioregistry.io/${value}`;
-                                displayValue = `<a href="${curieUrl}" target="_blank" style="color: #667eea; text-decoration: none; border-bottom: 1px dashed #667eea;">${displayValue}</a>`;
+                                displayValue = `<a href="${curieUrl}" target="_blank" style="color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981;">${displayValue}</a>`;
                             }
-                            
+
+                            // Generic handling for URL type fields
+                            if (fieldConfig.type === 'url' && value) {
+                                // Handle local URLs (starting with ../) or full URLs
+                                const isLocalUrl = value.startsWith('../');
+                                const target = isLocalUrl ? '_blank' : '_blank';  // Open both in new tab
+                                displayValue = `<a href="${value}" target="${target}" style="color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981;">${fieldConfig.label}</a>`;
+                            }
+
                             return `
                                 <div class="field-display">
                                     <span class="field-label">${fieldConfig.label}:</span>
@@ -834,9 +1065,24 @@
                             `;
                         }
                     }).join('');
-                    
+
                     return `<div class="result-card">${fieldsHtml}</div>`;
                 }).join('');
+
+                // Add "Load More" button if there are more items
+                if (this.displayedCount < totalCount) {
+                    const remaining = totalCount - this.displayedCount;
+                    html += `
+                        <div class="load-more-container">
+                            <button class="load-more-btn" id="loadMoreBtn">
+                                Load More Results
+                            </button>
+                            <div class="load-more-info">${remaining.toLocaleString()} more items available</div>
+                        </div>
+                    `;
+                }
+
+                resultsGrid.innerHTML = html;
             }
             
             renderFacets(facetCounts) {
@@ -852,47 +1098,52 @@
                     // Check if this facet is collapsed
                     const isCollapsed = this.collapsedFacets.has(facetConfig.field);
                     
-                    // Handle integer type facets with slider
+                    // Handle integer type facets with range slider
                     if (facetConfig.type === 'integer') {
-                        // Get min and max values
-                        const values = Array.from(counts.keys()).map(k => parseInt(k)).filter(v => !isNaN(v));
-                        if (values.length === 0) return '';
-                        
-                        const minValue = Math.min(...values);
-                        const maxValue = Math.max(...values);
-                        
-                        // Get current filter range
+                        // Get min and max from ORIGINAL data (facetIndex), not filtered counts
+                        const originalValues = this.facetIndex[facetConfig.field];
+                        if (!originalValues || originalValues.size === 0) return '';
+
+                        const allValues = Array.from(originalValues.keys()).map(k => parseInt(k)).filter(v => !isNaN(v));
+                        if (allValues.length === 0) return '';
+
+                        const minValue = Math.min(...allValues);
+                        const maxValue = Math.max(...allValues);
+
+                        // Get current filter range (defaults to full range)
                         const currentRange = this.currentFilters[facetConfig.field] || { min: minValue, max: maxValue };
-                        
+                        const hasActiveFilter = this.currentFilters[facetConfig.field] !== undefined;
+
+                        // Calculate handle positions as percentages
+                        const range = maxValue - minValue;
+                        const minPercent = range > 0 ? ((currentRange.min - minValue) / range) * 100 : 0;
+                        const maxPercent = range > 0 ? ((currentRange.max - minValue) / range) * 100 : 100;
+
                         return `
                             <div class="facet-group">
                                 <div class="facet-header" data-field="${facetConfig.field}">
-                                    <div class="facet-title">${facetConfig.label} (${minValue}-${maxValue})</div>
+                                    <div class="facet-title">${facetConfig.label}</div>
                                     <div class="facet-toggle ${isCollapsed ? 'collapsed' : ''}">▼</div>
                                 </div>
                                 <div class="facet-content ${isCollapsed ? 'collapsed' : ''}">
-                                    <div class="numeric-filter-container">
-                                        <div class="numeric-range-info">
-                                            Range: ${minValue} to ${maxValue}
+                                    <div class="numeric-filter-container" style="position: relative;">
+                                        ${hasActiveFilter ? `<button class="range-slider-clear" data-field="${facetConfig.field}">Clear</button>` : ''}
+                                        <div class="range-slider-wrapper"
+                                             data-field="${facetConfig.field}"
+                                             data-min="${minValue}"
+                                             data-max="${maxValue}">
+                                            <div class="range-slider-track"></div>
+                                            <div class="range-slider-range" style="left: ${minPercent}%; right: ${100 - maxPercent}%;"></div>
+                                            <div class="range-slider-handle range-slider-handle-min"
+                                                 data-type="min"
+                                                 style="left: ${minPercent}%;"></div>
+                                            <div class="range-slider-handle range-slider-handle-max"
+                                                 data-type="max"
+                                                 style="left: ${maxPercent}%;"></div>
                                         </div>
-                                        <div class="numeric-input-wrapper">
-                                            <input type="number" 
-                                                   class="numeric-input numeric-input-min" 
-                                                   min="${minValue}" 
-                                                   max="${maxValue}" 
-                                                   value="${currentRange.min}"
-                                                   placeholder="Min"
-                                                   data-field="${facetConfig.field}"
-                                                   data-type="min">
-                                            <span class="numeric-separator">-</span>
-                                            <input type="number" 
-                                                   class="numeric-input numeric-input-max" 
-                                                   min="${minValue}" 
-                                                   max="${maxValue}" 
-                                                   value="${currentRange.max}"
-                                                   placeholder="Max"
-                                                   data-field="${facetConfig.field}"
-                                                   data-type="max">
+                                        <div class="range-slider-labels">
+                                            <span class="range-slider-label range-slider-label-min">${currentRange.min}</span>
+                                            <span class="range-slider-label range-slider-label-max">${currentRange.max}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -911,21 +1162,27 @@
                                 return a.key.localeCompare(b.key);
                             }
                         });
-                    
-                    const itemsHtml = buckets.map(bucket => {
-                        const isActive = this.currentFilters[facetConfig.field] && 
+
+                    // Determine how many facet items to show
+                    const isExpanded = this.expandedFacets.has(facetConfig.field);
+                    const maxToShow = isExpanded ? buckets.length : this.facetItemsToShow;
+                    const bucketsToShow = buckets.slice(0, maxToShow);
+                    const hasMore = buckets.length > this.facetItemsToShow;
+
+                    const itemsHtml = bucketsToShow.map(bucket => {
+                        const isActive = this.currentFilters[facetConfig.field] &&
                                         this.currentFilters[facetConfig.field].includes(bucket.key);
-                        
+
                         // Create hyperlink for CURIE type facets
                         let displayValue = bucket.key;
                         if (facetConfig.type === 'curie' && bucket.key.includes(':')) {
                             const curieUrl = `https://bioregistry.io/${bucket.key}`;
                             displayValue = `<a href="${curieUrl}" target="_blank" style="color: inherit; text-decoration: none;" onclick="event.stopPropagation();">${bucket.key}</a>`;
                         }
-                        
+
                         return `
-                            <div class="facet-item ${isActive ? 'active' : ''}" 
-                                 data-filter="${facetConfig.field}" 
+                            <div class="facet-item ${isActive ? 'active' : ''}"
+                                 data-filter="${facetConfig.field}"
                                  data-value="${bucket.key}">
                                 <input type="checkbox" class="facet-checkbox" ${isActive ? 'checked' : ''}>
                                 <span>${displayValue}</span>
@@ -933,7 +1190,18 @@
                             </div>
                         `;
                     }).join('');
-                    
+
+                    // Add show more/less button if needed
+                    let showMoreBtn = '';
+                    if (hasMore) {
+                        const remaining = buckets.length - this.facetItemsToShow;
+                        showMoreBtn = `
+                            <button class="facet-show-more" data-field="${facetConfig.field}">
+                                ${isExpanded ? 'Show Less' : `Show ${remaining} More`}
+                            </button>
+                        `;
+                    }
+
                     return `
                         <div class="facet-group">
                             <div class="facet-header" data-field="${facetConfig.field}">
@@ -942,6 +1210,7 @@
                             </div>
                             <div class="facet-content ${isCollapsed ? 'collapsed' : ''}">
                                 ${itemsHtml}
+                                ${showMoreBtn}
                             </div>
                         </div>
                     `;
@@ -1030,6 +1299,13 @@
             // Set search placeholder
             if (schema.searchPlaceholder) {
                 document.getElementById('searchBox').placeholder = schema.searchPlaceholder;
+            }
+
+            // Inject custom CSS if provided
+            if (schema.customCss) {
+                const styleEl = document.createElement('style');
+                styleEl.textContent = schema.customCss;
+                document.head.appendChild(styleEl);
             }
             
             console.log('📊 Data check:', {

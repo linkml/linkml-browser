@@ -1,8 +1,16 @@
-const schema = {
-  "title": "Book Catalog Browser",
-  "description": "Browse and search through a curated collection of influential books across various genres",
-  "searchPlaceholder": "Search by title, author, or description...",
-  "searchableFields": ["title", "author", "description"],
+window.searchSchema = {
+  "title": "Books Browser",
+  "description": "Browse and filter classic literature",
+  "searchPlaceholder": "Search...",
+  "searchableFields": [
+    "genre",
+    "publisher",
+    "id",
+    "title",
+    "language",
+    "author",
+    "description"
+  ],
   "facets": [
     {
       "field": "genre",
@@ -11,42 +19,89 @@ const schema = {
       "sortBy": "count"
     },
     {
-      "field": "language",
-      "label": "Language",
+      "field": "publisher",
+      "label": "Publisher",
       "type": "string",
-      "sortBy": "alphabetical"
+      "sortBy": "count"
     },
     {
-      "field": "publicationYear",
+      "field": "id",
+      "label": "Id",
+      "type": "string",
+      "sortBy": "count"
+    },
+    {
+      "field": "title",
+      "label": "Title",
+      "type": "string",
+      "sortBy": "count"
+    },
+    {
+      "field": "pages",
+      "label": "Pages",
+      "type": "integer",
+      "sortBy": "count"
+    },
+    {
+      "field": "publication_year",
       "label": "Publication Year",
-      "type": "integer"
+      "type": "integer",
+      "sortBy": "count"
+    },
+    {
+      "field": "author",
+      "label": "Author",
+      "type": "string",
+      "sortBy": "count"
+    },
+    {
+      "field": "description",
+      "label": "Description",
+      "type": "string",
+      "sortBy": "count"
     },
     {
       "field": "rating",
       "label": "Rating",
-      "type": "integer"
+      "type": "string",
+      "sortBy": "count"
     }
   ],
   "displayFields": [
-    {
-      "field": "title",
-      "label": "Title",
-      "type": "string"
-    },
     {
       "field": "author",
       "label": "Author",
       "type": "string"
     },
     {
-      "field": "publicationYear",
-      "label": "Year",
-      "type": "integer"
+      "field": "description",
+      "label": "Description",
+      "type": "string"
     },
     {
       "field": "genre",
-      "label": "Genres",
+      "label": "Genre",
       "type": "array"
+    },
+    {
+      "field": "id",
+      "label": "Id",
+      "type": "string"
+    },
+    {
+      "field": "language",
+      "label": "Language",
+      "type": "string"
+    },
+    {
+      "field": "pages",
+      "label": "Pages",
+      "type": "string"
+    },
+    {
+      "field": "publication_year",
+      "label": "Publication Year",
+      "type": "string"
     },
     {
       "field": "publisher",
@@ -54,26 +109,15 @@ const schema = {
       "type": "string"
     },
     {
-      "field": "pages",
-      "label": "Pages",
-      "type": "integer"
-    },
-    {
       "field": "rating",
       "label": "Rating",
-      "type": "number"
-    },
-    {
-      "field": "language",
-      "label": "Original Language",
       "type": "string"
     },
     {
-      "field": "description",
-      "label": "Description",
+      "field": "title",
+      "label": "Title",
       "type": "string"
     }
   ]
 };
-
-window.searchSchema = schema;
+window.dispatchEvent(new Event('searchDataReady'));
