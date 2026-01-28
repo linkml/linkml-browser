@@ -50,6 +50,30 @@ cargo tauri dev
 - Simple load/save with atomic writes.
 - Avoid database dependencies (no SQLite/MySQL).
 
+### File Format (Proposed)
+- One file per dataset to avoid collisions and simplify backup/export.
+- Filename derived from dataset hash: `annotations_<datasetHash>.json`
+
+Example:
+```json
+{
+  "schemaVersion": 1,
+  "datasetHash": "sha256:...",
+  "updatedAt": "2026-01-28T12:34:56Z",
+  "annotations": {
+    "R-001": {
+      "recordId": "R-001",
+      "status": "submitted",
+      "updatedAt": "2026-01-28T12:10:00Z",
+      "data": {
+        "overall_rank": 4,
+        "is_spam": false
+      }
+    }
+  }
+}
+```
+
 ## UI Integration Strategy
 - Add a small "store" abstraction in JS.
 - At runtime detect `window.__TAURI__`:
