@@ -22,6 +22,28 @@
 - **Feature gating** to keep read-only static builds unchanged unless curation is enabled.
 - **Status state machine** to drive queues/faceting (pending/draft/submitted/discarded).
 
+## Diagrams
+
+```mermaid
+flowchart LR
+    Data[data.json] --> Gen[linkml-browser deploy]
+    Schema[schema.json] --> Gen
+    Gen --> Out[index.html + data.js + schema.js]
+    Out --> UI[Browser UI]
+    UI --> Store[Annotation Store]
+    Store --> Export[annotations.json]
+```
+
+```mermaid
+stateDiagram-v2
+    [*] --> pending
+    pending --> draft: start editing
+    draft --> submitted: submit
+    draft --> discarded: discard
+    submitted --> draft: edit again
+    discarded --> draft: resume
+```
+
 ## Phases
 
 ### Phase 0: Schema + UX Design (spec only)

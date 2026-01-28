@@ -2,7 +2,7 @@
 
 ## Goals
 - Package the existing generated static UI as a desktop app without changing the default static-site workflow.
-- Provide durable local annotation storage (file or SQLite) and native file dialogs.
+- Provide durable local annotation storage (JSON file) and native file dialogs.
 - Keep the same JS/HTML/CSS logic; add only small bridge code.
 - Allow optional API sync later without making it required.
 
@@ -22,6 +22,24 @@ apps/
 - Keep `src/linkml_browser/index.html` as the source of truth.
 - The generator writes a complete static bundle into `apps/tauri/ui/`.
 - Tauri points its `distDir` to `apps/tauri/ui/`.
+
+## Diagrams
+
+```mermaid
+flowchart TB
+    Root[repo root] --> Apps[apps/]
+    Apps --> Tauri[tauri/]
+    Tauri --> SrcTauri[src-tauri/]
+    Tauri --> UI[ui/ (generated)]
+    Root --> Src[src/linkml_browser/]
+    Src --> Template[index.html]
+```
+
+```mermaid
+flowchart LR
+    Gen[linkml-browser deploy] --> UI[apps/tauri/ui]
+    UI --> TauriApp[Tauri desktop app]
+```
 
 ## Build Flow
 
@@ -52,12 +70,19 @@ cargo tauri dev
 - A dedicated desktop build could embed a specific dataset for turnkey distribution.
 - Not recommended as the primary workflow; keep the app generic.
 
+```mermaid
+flowchart TB
+    A[Curator receives generated folder] --> B[Open folder in Tauri]
+    B --> C[Load index.html + data.js + schema.js]
+    D[Raw data.json + schema.json] --> E[Generate data.js + schema.js]
+    E --> B
+```
+
 ## Configuration
 - Tauri config uses `distDir: "../ui"` and `devPath` for local preview.
 - Allowlist only the needed APIs:
   - file dialogs
   - filesystem (scoped to the app data directory)
-  - optional SQLite plugin
 - Disable remote navigation by default.
 
 ## Storage
@@ -99,7 +124,7 @@ Example:
 ## UI Integration Strategy
 - Add a small "store" abstraction in JS.
 - At runtime detect `window.__TAURI__`:
-  - If present, use Tauri store backend (file/SQLite).
+  - If present, use Tauri store backend (file).
   - Else, fall back to browser localStorage.
 - Keep the rendering pipeline identical for static and desktop.
 

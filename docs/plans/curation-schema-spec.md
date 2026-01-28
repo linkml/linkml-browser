@@ -45,6 +45,26 @@ Example:
 - `inline` (default): render the curation panel inside each record card.
 - `split` (optional): left pane list + right pane curation form (Argilla-like), only when explicitly enabled.
 
+## Diagrams
+
+```mermaid
+flowchart TB
+    Schema --> RecordIdField
+    Schema --> DisplayFields
+    DisplayFields --> Decorators
+    Schema --> CurationFields
+    Schema --> Curation
+    Curation --> Layout
+    Curation --> Sections
+    Schema --> StatusField[__curation_status (system)]
+```
+
+```mermaid
+flowchart LR
+    DisplayField[displayFields entry] --> Decorator[decorator widget]
+    Decorator --> CurField[curation field key]
+```
+
 ### Reserved System Fields
 
 #### `__curation_status`

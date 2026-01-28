@@ -17,6 +17,28 @@ Each record annotation is a small object keyed by `recordId`.
 }
 ```
 
+## Diagrams
+
+```mermaid
+erDiagram
+    DATASET ||--o{ ANNOTATION : has
+    ANNOTATION {
+        string recordId
+        string curatorId
+        string status
+        datetime updatedAt
+        json data
+    }
+```
+
+```mermaid
+flowchart LR
+    UI[Browser UI] --> Store[Annotation Store]
+    Store --> File[annotations.json]
+    Import[Import JSON] --> Store
+    Store --> Export[Export JSON]
+```
+
 ## Storage Abstraction
 Implement a simple interface in the frontend:
 
@@ -75,7 +97,7 @@ File: `annotations.json`
 - If hash mismatch, show warning but allow import.
 
 ## UI Hooks
-- Global toolbar buttons: Export JSON, Export CSV, Import.
+- Global toolbar buttons: Export JSON, Import.
 - Record-level status: saved / unsaved / invalid.
 
 ## Optional API Contract (Phase 3)
