@@ -55,6 +55,7 @@
 - Tauri wrapper points at the same generated UI output.
 - Local file or SQLite-backed storage via Tauri.
 - Native file dialogs for import/export.
+- See `docs/plans/tauri-app-plan.md` for repo layout and build flow details.
 
 ## Deliverables
 - Updated schema docs in `docs/`.
