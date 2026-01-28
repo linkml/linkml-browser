@@ -6,6 +6,7 @@
 - Make curation schema-driven and optional.
 - Support local-only storage first; allow optional API sync later.
 - Preserve current faceted search and card rendering behavior.
+- Provide a facetable curation status (pending/draft/submitted/discarded) without exposing it as a display field.
 
 ## Non-Goals (initial phases)
 - Real-time multi-user collaboration.
@@ -16,8 +17,9 @@
 - **Schema extensions** for curation fields + inline decorators.
 - **UI renderer** for curation panel + inline decorators.
 - **Annotation store abstraction** (local storage now; API later).
-- **Import/export** for annotations (JSON + CSV).
+- **Import/export** for annotations (JSON only).
 - **Feature gating** to keep read-only static builds unchanged unless curation is enabled.
+- **Status state machine** to drive queues/faceting (pending/draft/submitted/discarded).
 
 ## Phases
 
@@ -32,6 +34,7 @@
 - Implement local annotation store (localStorage for small datasets, IndexedDB for larger).
 - Add import/export actions.
 - Add minimal UI states (saved, dirty, invalid).
+- Compute and persist `__curation_status`; expose as a facet by default.
 
 ### Phase 2: Polishing
 - Validation errors per field.
@@ -54,17 +57,19 @@
 - UI changes in `src/linkml_browser/index.html`.
 - Annotation store module added to frontend (embedded in HTML).
 - Import/export helpers.
+- Curation status facet and state transitions.
 - Optional Tauri wrapper scaffold in `apps/tauri/` (if pursued).
 
 ## Risks / Open Questions
 - Stable record IDs required for annotation persistence.
 - Large datasets may need IndexedDB to avoid localStorage limits.
 - UI complexity: ensure curation doesn’t degrade existing search performance.
+- Status rules for “draft vs submitted” when only partial answers are provided.
 
 ## Testing Strategy
 - Unit-ish JS tests are not present; plan manual test checklist:
   - Load dataset, set annotations, reload page, verify persistence.
-  - Export JSON/CSV, import into fresh browser profile, verify merge behavior.
+  - Export JSON, import into fresh browser profile, verify merge behavior.
   - Validate field types and range limits.
   - Verify faceted browsing remains unchanged when curation is disabled.
-
+  - Verify status transitions (pending -> draft -> submitted; discarded flow).

@@ -8,6 +8,7 @@ Each record annotation is a small object keyed by `recordId`.
   "recordId": "R-001",
   "curatorId": "alice",
   "updatedAt": "2026-01-28T12:10:00Z",
+  "status": "submitted",
   "data": {
     "overall_rank": 4,
     "is_spam": false,
@@ -23,6 +24,8 @@ Implement a simple interface in the frontend:
 - `saveAnnotation(recordId, data)`
 - `listAnnotations()`
 - `clearAnnotations()` (optional)
+
+The store should persist `status` alongside `data`. If `status` is missing, compute it from the saved data and completeness rules.
 
 ### Implementations
 1) **LocalStorageStore** (MVP)
@@ -51,16 +54,6 @@ File: `annotations.json`
 }
 ```
 
-### CSV (optional)
-File: `annotations.csv`
-
-```
-recordId,curatorId,updatedAt,overall_rank,is_spam,notes
-R-001,alice,2026-01-28T12:10:00Z,4,false,"ambiguous case"
-```
-
-CSV uses flattened fields; complex arrays should be JSON-encoded strings.
-
 ## Import
 
 ### Merge Policies
@@ -86,4 +79,3 @@ CSV uses flattened fields; complex arrays should be JSON-encoded strings.
 - `GET /annotations?recordId=...`
 - `POST /annotations` (upsert)
 - `GET /annotations?filter=...` for batch load
-

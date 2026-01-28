@@ -32,12 +32,26 @@ Optional layout and UX hints.
 Example:
 ```json
 "curation": {
+  "statusFacet": true,
   "sections": [
     { "label": "Quick Signals", "fields": ["is_spam", "overall_rank"] },
     { "label": "Qualitative", "fields": ["notes"] }
   ]
 }
 ```
+
+### Reserved System Fields
+
+#### `__curation_status`
+Computed per record and used for queueing/faceting. This is a system field and should not appear in `displayFields`.
+
+Supported values (initial):
+- `pending` (no responses)
+- `draft` (partial or unsaved response)
+- `submitted` (completed response)
+- `discarded` (explicitly skipped)
+
+The status field should be automatically added as a facet when curation is enabled, unless `curation.statusFacet` is explicitly set to `false`.
 
 ## Display Field Decorators (Inline Widgets)
 Add a `decorators` array to `displayFields` entries to attach quick feedback to an existing display slot.
@@ -81,4 +95,4 @@ A future addition can add a formal JSON Schema for the new keys. The UI can oper
 - If `curationFields` is missing, the UI renders exactly as today.
 - If `decorators` are missing, display fields render as today.
 - If `recordIdField` is missing, curation is disabled by default (or relies on a deterministic hash only when explicitly enabled).
-
+- If `curation.statusFacet` is false, the status field is still tracked but not faceted.
