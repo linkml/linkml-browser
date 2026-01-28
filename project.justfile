@@ -60,3 +60,36 @@ gallery-check:
 [group('gallery')]
 gallery-serve:
     uv run python -m http.server 8000 --directory docs
+
+# ============== Tauri demo recipes ==============
+
+# Copy a gallery into ui/ for Tauri testing: just tauri-demo dismech
+[group('tauri')]
+tauri-demo name:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    dir="{{gallery_dir}}/{{name}}"
+    if [[ ! -d "$dir" ]]; then
+        echo "Unknown gallery: {{name}}"
+        echo "Available:"
+        ls -1 "{{gallery_dir}}"
+        exit 1
+    fi
+    rm -rf ui
+    cp -R "$dir" ui
+    echo "Loaded {{name}} into ui/"
+
+# Faster alternative using a symlink: just tauri-demo-link dismech
+[group('tauri')]
+tauri-demo-link name:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    dir="{{gallery_dir}}/{{name}}"
+    if [[ ! -d "$dir" ]]; then
+        echo "Unknown gallery: {{name}}"
+        echo "Available:"
+        ls -1 "{{gallery_dir}}"
+        exit 1
+    fi
+    ln -sfn "$dir" ui
+    echo "Linked {{name}} to ui/"

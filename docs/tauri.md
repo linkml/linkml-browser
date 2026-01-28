@@ -6,8 +6,7 @@
 
 ## Testing Workflow (using gallery example)
 ```bash
-mkdir -p ui
-cp -R docs/gallery/dismech/* ui/
+just tauri-demo dismech
 cargo tauri dev
 ```
 
@@ -24,3 +23,4 @@ cargo tauri dev
 - You can change the path by updating `src-tauri/tauri.conf.json`.
 - `ui/` is treated as build output and is ignored by git.
 - In the desktop app, use the “Open Dataset” button to select another generated browser folder.
+- For fast local switching, use `just tauri-demo <gallery>` or `just tauri-demo-link <gallery>`.
