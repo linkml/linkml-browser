@@ -32,6 +32,7 @@ Optional layout and UX hints.
 Example:
 ```json
 "curation": {
+  "layout": "inline",
   "statusFacet": true,
   "sections": [
     { "label": "Quick Signals", "fields": ["is_spam", "overall_rank"] },
@@ -39,6 +40,10 @@ Example:
   ]
 }
 ```
+
+`layout` values (initial):
+- `inline` (default): render the curation panel inside each record card.
+- `split` (optional): left pane list + right pane curation form (Argilla-like), only when explicitly enabled.
 
 ### Reserved System Fields
 

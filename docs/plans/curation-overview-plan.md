@@ -16,6 +16,7 @@
 ## High-Level Architecture
 - **Schema extensions** for curation fields + inline decorators.
 - **UI renderer** for curation panel + inline decorators.
+- **Layout modes** to support inline-per-card (default) and optional split view (Argilla-like).
 - **Annotation store abstraction** (local storage now; API later).
 - **Import/export** for annotations (JSON only).
 - **Feature gating** to keep read-only static builds unchanged unless curation is enabled.
@@ -26,11 +27,14 @@
 ### Phase 0: Schema + UX Design (spec only)
 - Finalize schema extension structure and field types.
 - Decide on default UI placement (inline decorators vs curation panel).
+- Decide on layout mode defaults (inline-per-card vs split view).
 - Decide on record ID strategy and required schema fields.
 
 ### Phase 1: Local-Only MVP
 - Implement schema parsing of curation fields and decorators.
 - Render curation UI per card.
+- Keep inline-per-card as the default to avoid breaking existing layouts.
+- Add a configurable split view layout only if it can be introduced without changing the default rendering path.
 - Implement local annotation store (localStorage for small datasets, IndexedDB for larger).
 - Add import/export actions.
 - Add minimal UI states (saved, dirty, invalid).
