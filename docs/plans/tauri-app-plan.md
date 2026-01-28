@@ -45,16 +45,10 @@ cargo tauri dev
   - optional SQLite plugin
 - Disable remote navigation by default.
 
-## Storage Options
-
-### Option A: Local JSON file (MVP)
-- Store annotations in an app data directory (Tauri path APIs).
-- Simple load/save (atomic writes).
-- Good for small/medium datasets.
-
-### Option B: SQLite (Phase 2)
-- Use Tauri SQL plugin for large datasets.
-- Keyed by `recordId` with JSON blobs for `data` and `status`.
+## Storage
+- Use a local JSON file stored in the app data directory (Tauri path APIs).
+- Simple load/save with atomic writes.
+- Avoid database dependencies (no SQLite/MySQL).
 
 ## UI Integration Strategy
 - Add a small "store" abstraction in JS.
@@ -73,12 +67,11 @@ cargo tauri dev
 - Use GitHub Actions for release artifacts.
 
 ## Risks / Open Questions
-- Large datasets may need SQLite to avoid memory pressure.
+- Large datasets may need incremental writes or sharding to avoid memory pressure.
 - File storage concurrency for multiple windows.
 - The generator must ensure stable record IDs for durable annotations.
 
 ## Milestones
 1) Scaffold Tauri app and wire distDir to generated UI.
 2) Implement local JSON storage via Tauri FS.
-3) Optional SQLite backend.
-4) Packaging + release workflow.
+3) Packaging + release workflow.
