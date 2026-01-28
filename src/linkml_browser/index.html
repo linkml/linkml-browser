@@ -1003,7 +1003,7 @@
                     annotation.data[field] = value;
                 }
                 annotation.updatedAt = new Date().toISOString();
-                annotation.status = 'draft';
+                annotation.status = this.computeStatusFromData(annotation.data);
                 this.annotations[recordId] = annotation;
                 this.saveAnnotationsToStorage();
                 this.updateStatusFacetIndex(recordId, previousStatus, annotation.status);
