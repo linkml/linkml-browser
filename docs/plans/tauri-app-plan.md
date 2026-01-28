@@ -37,6 +37,21 @@ cd apps/tauri
 cargo tauri dev
 ```
 
+## Dataset Workflow (Desktop)
+
+### Recommended: Open a generated browser folder
+- Curator receives a folder containing `index.html`, `data.js`, and `schema.js` (the same output as static deploy).
+- Desktop app opens that folder and loads the UI directly.
+- This keeps the generator as the single source of truth and avoids schema discovery inside the app.
+
+### Alternative: Open raw data + schema
+- App accepts `data.json` and `schema.json`, then generates `data.js`/`schema.js` into an app workspace directory.
+- Useful for convenience, but adds complexity (duplicate generator logic or a bundled Python runtime).
+
+### Bundled schema/data (not default)
+- A dedicated desktop build could embed a specific dataset for turnkey distribution.
+- Not recommended as the primary workflow; keep the app generic.
+
 ## Configuration
 - Tauri config uses `distDir: "../ui"` and `devPath` for local preview.
 - Allowlist only the needed APIs:
