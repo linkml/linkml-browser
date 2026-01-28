@@ -65,9 +65,15 @@ gallery-serve:
 
 # Copy a gallery into ui/ for Tauri testing: just tauri-demo dismech
 [group('tauri')]
-tauri-demo name:
+tauri-demo name="":
     #!/usr/bin/env bash
     set -euo pipefail
+    if [[ -z "{{name}}" ]]; then
+        echo "Usage: just tauri-demo <gallery>"
+        echo "Available:"
+        ls -1 "{{gallery_dir}}"
+        exit 1
+    fi
     dir="{{gallery_dir}}/{{name}}"
     if [[ ! -d "$dir" ]]; then
         echo "Unknown gallery: {{name}}"
@@ -81,9 +87,15 @@ tauri-demo name:
 
 # Faster alternative using a symlink: just tauri-demo-link dismech
 [group('tauri')]
-tauri-demo-link name:
+tauri-demo-link name="":
     #!/usr/bin/env bash
     set -euo pipefail
+    if [[ -z "{{name}}" ]]; then
+        echo "Usage: just tauri-demo-link <gallery>"
+        echo "Available:"
+        ls -1 "{{gallery_dir}}"
+        exit 1
+    fi
     dir="{{gallery_dir}}/{{name}}"
     if [[ ! -d "$dir" ]]; then
         echo "Unknown gallery: {{name}}"
