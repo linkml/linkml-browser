@@ -98,8 +98,8 @@ Example:
 - Use GitHub Actions for release artifacts.
 
 ## Risks / Open Questions
-- Large datasets may need incremental writes or sharding to avoid memory pressure.
-- File storage concurrency for multiple windows.
+- Large datasets may need incremental writes or sharding to avoid memory pressure (low risk for single-user, slow manual curation).
+- File storage concurrency for multiple windows (low risk for single-window usage).
 - The generator must ensure stable record IDs for durable annotations.
 
 ## Milestones
