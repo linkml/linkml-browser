@@ -70,6 +70,19 @@ cargo tauri dev
 - A dedicated desktop build could embed a specific dataset for turnkey distribution.
 - Not recommended as the primary workflow; keep the app generic.
 
+### Desktop UX (End Users)
+- On launch, show a dataset chooser with:
+  - “Open dataset folder…” (select a folder containing `index.html`, `data.js`, `schema.js`)
+  - A “Recent datasets” list stored in app config
+- If a recent dataset exists, allow one-click reopen.
+- Keep the binary usable without a terminal (double‑click experience).
+
+### Dev/Testing Workflow (Gallery Switching)
+- Keep `ui/` as a staging folder for dev.
+- Switch datasets quickly by copying or symlinking a gallery folder:
+  - `cp -R docs/gallery/dismech/* ui/`
+  - or `ln -sfn docs/gallery/dismech ui` (fastest)
+
 ```mermaid
 flowchart TB
     A[Curator receives generated folder] --> B[Open folder in Tauri]

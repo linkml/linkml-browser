@@ -23,3 +23,4 @@ cargo tauri dev
 - The static browser itself is not hardwired to `ui/`; only the Tauri wrapper uses that path.
 - You can change the path by updating `src-tauri/tauri.conf.json`.
 - `ui/` is treated as build output and is ignored by git.
+- In the desktop app, use the “Open Dataset” button to select another generated browser folder.

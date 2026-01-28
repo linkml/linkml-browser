@@ -625,6 +625,7 @@
                 <div class="results-header">
                     <div class="results-count" id="resultsCount">Loading...</div>
                     <div class="results-actions">
+                        <button class="curation-action-btn secondary" id="openDataset">Open Dataset</button>
                         <button class="curation-action-btn" id="exportAnnotations">Export Annotations</button>
                         <button class="curation-action-btn secondary" id="importAnnotations">Import Annotations</button>
                         <input type="file" id="importAnnotationsFile" accept="application/json" style="display: none;">
@@ -982,6 +983,22 @@
                 link.click();
                 document.body.removeChild(link);
                 URL.revokeObjectURL(url);
+            }
+
+            async openDatasetDialog() {
+                if (!window.__TAURI__ || !window.__TAURI__.dialog) {
+                    return;
+                }
+                try {
+                    const { open } = window.__TAURI__.dialog;
+                    const selected = await open({ directory: true, multiple: false });
+                    if (!selected) return;
+                    localStorage.setItem('linkml_browser_dataset_path', selected);
+                    window.location.reload();
+                } catch (error) {
+                    console.error('Failed to open dataset folder', error);
+                    alert('Failed to open dataset folder.');
+                }
             }
 
             async handleImportFile(event) {
@@ -1489,6 +1506,15 @@
                 if (importBtn && importFile) {
                     importBtn.addEventListener('click', () => importFile.click());
                     importFile.addEventListener('change', (event) => this.handleImportFile(event));
+                }
+
+                const openDatasetBtn = document.getElementById('openDataset');
+                if (openDatasetBtn) {
+                    if (window.__TAURI__ && window.__TAURI__.dialog) {
+                        openDatasetBtn.addEventListener('click', () => this.openDatasetDialog());
+                    } else {
+                        openDatasetBtn.style.display = 'none';
+                    }
                 }
 
                 document.addEventListener('click', (e) => {
@@ -2140,12 +2166,47 @@
             ]
         };
 
+        function parseJsonArrayFromJs(text) {
+            const start = text.indexOf('[');
+            const end = text.lastIndexOf(']');
+            if (start === -1 || end === -1) {
+                throw new Error('Failed to find JSON array in data file.');
+            }
+            return JSON.parse(text.slice(start, end + 1));
+        }
+
+        function parseJsonObjectFromJs(text) {
+            const start = text.indexOf('{');
+            const end = text.lastIndexOf('}');
+            if (start === -1 || end === -1) {
+                throw new Error('Failed to find JSON object in schema file.');
+            }
+            return JSON.parse(text.slice(start, end + 1));
+        }
+
+        async function loadDatasetFromPath(datasetPath) {
+            const fsApi = window.__TAURI__ && window.__TAURI__.fs;
+            if (!fsApi || !fsApi.readTextFile) {
+                throw new Error('Tauri filesystem API unavailable.');
+            }
+            const pathApi = window.__TAURI__.path;
+            const join = pathApi && pathApi.join ? pathApi.join : null;
+            const dataPath = join ? await join(datasetPath, 'data.js') : `${datasetPath}/data.js`;
+            const schemaPath = join ? await join(datasetPath, 'schema.js') : `${datasetPath}/schema.js`;
+            const dataText = await fsApi.readTextFile(dataPath);
+            const schemaText = await fsApi.readTextFile(schemaPath);
+            return {
+                data: parseJsonArrayFromJs(dataText),
+                schema: parseJsonObjectFromJs(schemaText)
+            };
+        }
+
         // Initialize when ready
-        function initializeSearch() {
+        function initializeSearch(dataOverride, schemaOverride) {
             console.log('🔍 Initializing search...');
             
-            const data = window.searchData || sampleData;
-            const schema = window.searchSchema || sampleSchema;
+            const data = dataOverride || window.searchData || sampleData;
+            const schema = schemaOverride || window.searchSchema || sampleSchema;
             
             // Set title and description from schema
             if (schema.title) {
@@ -2237,7 +2298,7 @@
             
             try {
                 console.log('🚀 Creating search instance...');
-                new OptimizedFacetedSearch(data, schema);
+                window.searchApp = new OptimizedFacetedSearch(data, schema);
                 console.log('✅ Search initialized successfully');
             } catch (error) {
                 console.error('❌ Error initializing search:', error);
@@ -2249,39 +2310,39 @@
         console.log('🔧 Setting up event listeners...');
         
         let initializationAttempted = false;
-        
-        function tryInitialize() {
-            if (initializationAttempted) {
-                console.log('⏭️ Initialization already attempted, skipping');
-                return;
+
+        function setupStandardInitialization() {
+            function tryInitialize() {
+                if (initializationAttempted) {
+                    console.log('⏭️ Initialization already attempted, skipping');
+                    return;
+                }
+                
+                if (window.searchData && window.searchSchema) {
+                    console.log('✅ Both data and schema available, initializing...');
+                    initializationAttempted = true;
+                    initializeSearch();
+                } else {
+                    console.log('⏳ Still waiting...', { 
+                        hasData: !!window.searchData, 
+                        hasSchema: !!window.searchSchema 
+                    });
+                }
             }
-            
+
             if (window.searchData && window.searchSchema) {
-                console.log('✅ Both data and schema available, initializing...');
+                console.log('📦 Data already loaded, initializing immediately');
                 initializationAttempted = true;
                 initializeSearch();
-            } else {
-                console.log('⏳ Still waiting...', { 
-                    hasData: !!window.searchData, 
-                    hasSchema: !!window.searchSchema 
-                });
+                return;
             }
-        }
-        
-        // Check if already loaded
-        if (window.searchData && window.searchSchema) {
-            console.log('📦 Data already loaded, initializing immediately');
-            initializeSearch();
-        } else {
+
             console.log('⏳ Waiting for data to load...');
-            
-            // Listen for both data and schema ready events
             window.addEventListener('searchDataReady', () => {
                 console.log('📡 searchDataReady event received');
-                setTimeout(tryInitialize, 50); // Small delay to ensure both files are processed
+                setTimeout(tryInitialize, 50);
             });
-            
-            // Enhanced fallback with more debugging
+
             setTimeout(() => {
                 console.log('⏰ Timeout reached, checking status...');
                 console.log('Final state check:', {
@@ -2299,6 +2360,7 @@
                         tryInitialize();
                     } else if (!window.searchData && !window.searchSchema) {
                         console.log('📋 No external data found, using sample data');
+                        initializationAttempted = true;
                         initializeSearch();
                     } else {
                         console.error('❌ Partial data loading - check your file paths');
@@ -2309,7 +2371,37 @@
                         }
                     }
                 }
-            }, 2000); // Increased timeout
+            }, 2000);
+        }
+
+        async function initializeFromTauriDataset() {
+            if (!window.__TAURI__ || !window.__TAURI__.fs) {
+                return false;
+            }
+            const datasetPath = localStorage.getItem('linkml_browser_dataset_path');
+            if (!datasetPath) {
+                return false;
+            }
+            try {
+                const { data, schema } = await loadDatasetFromPath(datasetPath);
+                initializationAttempted = true;
+                initializeSearch(data, schema);
+                return true;
+            } catch (error) {
+                console.error('Failed to load dataset from path', error);
+                localStorage.removeItem('linkml_browser_dataset_path');
+                return false;
+            }
+        }
+
+        if (window.__TAURI__) {
+            initializeFromTauriDataset().then((handled) => {
+                if (!handled) {
+                    setupStandardInitialization();
+                }
+            });
+        } else {
+            setupStandardInitialization();
         }
     </script>
 </body>
