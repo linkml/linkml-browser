@@ -7,14 +7,14 @@
 ## Testing Workflow (using gallery example)
 ```bash
 just tauri-demo dismech
-cargo tauri dev
+just tauri-dev
 ```
 
 ## Testing Workflow (your own dataset)
 Generate a static browser into `ui/`, then run Tauri:
 ```bash
 uv run linkml-browser deploy path/to/data.json ui/
-cargo tauri dev
+just tauri-dev
 ```
 
 ## Notes

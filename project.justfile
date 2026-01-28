@@ -105,3 +105,8 @@ tauri-demo-link name="":
     fi
     ln -sfn "$dir" ui
     echo "Linked {{name}} to ui/"
+
+# Run the Tauri dev app (expects ui/ to be populated)
+[group('tauri')]
+tauri-dev:
+    cargo tauri dev
