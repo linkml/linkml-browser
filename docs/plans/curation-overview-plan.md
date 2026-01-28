@@ -44,6 +44,25 @@ stateDiagram-v2
     discarded --> draft: resume
 ```
 
+## UI Mockup (Inline / Default)
+```
+┌────────────────────────────────────────────────────────────────────┐
+│ LinkML Browser [Search…]                 [Export JSON] [Import]     │
+├─────────────── Facets ────────────────┬─────────────────────────────┤
+│ Status:  [ ] pending                   │ Results (1–20 of 532)       │
+│          [ ] draft                     │ ┌─────────────────────────┐ │
+│          [x] submitted                 │ │ Title: ...               │ │
+│                                          │ │ Description: ...         │ │
+│ Category: [ ] A [x] B [ ] C             │ │ Tags: ...                │ │
+│                                          │ │ ----------------------  │ │
+│ ...                                      │ │ Curation                 │ │
+│                                          │ │ [thumbs] [rating ★★★]   │ │
+│                                          │ │ Notes: [.............]  │ │
+│                                          │ │ Status: submitted        │ │
+│                                          │ └─────────────────────────┘ │
+└──────────────────────────────────────────┴──────────────────────────┘
+```
+
 ## Phases
 
 ### Phase 0: Schema + UX Design (spec only)
