@@ -759,11 +759,13 @@
                 if (statusFacetDisabled) {
                     return;
                 }
-                const hasStatusFacet = this.schema.facets.some(facet => facet.field === '__curation_status');
+                const statusField = '__curation_status';
+                const statusLabel = (this.schema.curation && this.schema.curation.statusFacetLabel) || 'Evaluation Status';
+                const hasStatusFacet = this.schema.facets.some(facet => facet.field === statusField);
                 if (!hasStatusFacet) {
                     this.schema.facets.unshift({
-                        field: '__curation_status',
-                        label: 'Curation Status',
+                        field: statusField,
+                        label: statusLabel,
                         type: 'string',
                         sortBy: 'alphabetical'
                     });
@@ -937,7 +939,7 @@
                 this.facetIndex['__curation_status'].get(newStatus).add(idx);
             }
 
-            exportAnnotations() {
+            async exportAnnotations() {
                 if (!this.curationEnabled) return;
                 const payload = {
                     schemaVersion: 1,
@@ -945,11 +947,37 @@
                     exportedAt: new Date().toISOString(),
                     annotations: Object.values(this.annotations)
                 };
-                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const json = JSON.stringify(payload, null, 2);
+                const filename = `annotations_${this.datasetHash || 'export'}.json`;
+
+                if (window.__TAURI__ && window.__TAURI__.dialog && window.__TAURI__.fs) {
+                    try {
+                        const { save } = window.__TAURI__.dialog;
+                        const { writeTextFile } = window.__TAURI__.fs;
+                        if (save && writeTextFile) {
+                            const path = await save({
+                                defaultPath: filename,
+                                filters: [{ name: 'JSON', extensions: ['json'] }]
+                            });
+                            if (path) {
+                                await writeTextFile(path, json);
+                                return;
+                            }
+                        }
+                    } catch (error) {
+                        console.warn('Tauri export failed, falling back to browser download', error);
+                    }
+                }
+
+                this.downloadBlob(json, filename);
+            }
+
+            downloadBlob(contents, filename) {
+                const blob = new Blob([contents], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = `annotations_${this.datasetHash || 'export'}.json`;
+                link.download = filename;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
