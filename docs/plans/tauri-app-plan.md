@@ -49,6 +49,7 @@ cargo tauri dev
 - Use a local JSON file stored in the app data directory (Tauri path APIs).
 - Simple load/save with atomic writes.
 - Avoid database dependencies (no SQLite/MySQL).
+- Store a user identifier in a small app-level config file (see User Identity).
 
 ### File Format (Proposed)
 - One file per dataset to avoid collisions and simplify backup/export.
@@ -63,6 +64,7 @@ Example:
   "annotations": {
     "R-001": {
       "recordId": "R-001",
+      "curatorId": "alice",
       "status": "submitted",
       "updatedAt": "2026-01-28T12:10:00Z",
       "data": {
@@ -73,6 +75,11 @@ Example:
   }
 }
 ```
+
+## User Identity
+- Read a `curatorId` from a user-level config file, e.g. `linkml-browser.json` in the app config directory.
+- Allow environment variable overrides (e.g., `LINKML_BROWSER_CURATOR_ID`).
+- If neither is set, prompt once and persist to the config file.
 
 ## UI Integration Strategy
 - Add a small "store" abstraction in JS.

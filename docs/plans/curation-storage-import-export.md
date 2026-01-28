@@ -27,6 +27,10 @@ Implement a simple interface in the frontend:
 
 The store should persist `status` alongside `data`. If `status` is missing, compute it from the saved data and completeness rules.
 
+## Curator Identity
+- Read `curatorId` from a user-level config file where possible (desktop app) with environment variable overrides.
+- Fall back to a user prompt if no identifier is found.
+
 ### Implementations
 1) **LocalStorageStore** (MVP)
    - Suitable for small datasets.
