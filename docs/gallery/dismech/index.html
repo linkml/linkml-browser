@@ -927,6 +927,12 @@
                 return this.getCurationStatus(recordId);
             }
 
+            getRecordById(recordId) {
+                const idx = this.recordIndexById.get(recordId);
+                if (idx === undefined) return null;
+                return this.originalData[idx] || null;
+            }
+
             updateStatusFacetIndex(recordId, oldStatus, newStatus) {
                 if (!this.facetIndex || !this.facetIndex['__curation_status']) return;
                 const idx = this.recordIndexById.get(recordId);
@@ -946,7 +952,10 @@
                     schemaVersion: 1,
                     datasetHash: this.datasetHash,
                     exportedAt: new Date().toISOString(),
-                    annotations: Object.values(this.annotations)
+                    annotations: Object.values(this.annotations).map(entry => {
+                        const record = this.getRecordById(entry.recordId);
+                        return record ? { ...entry, record } : entry;
+                    })
                 };
                 const json = JSON.stringify(payload, null, 2);
                 const filename = `annotations_${this.datasetHash || 'export'}.json`;
