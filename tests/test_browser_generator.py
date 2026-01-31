@@ -175,6 +175,6 @@ class TestBrowserGenerator:
         data = load_json_data(test_file)
         
         assert isinstance(data, list)
-        assert len(data) == 5
+        assert len(data) == 50
         assert data[0]["title"] == "The Great Gatsby"
         assert data[1]["author"] == "Harper Lee"

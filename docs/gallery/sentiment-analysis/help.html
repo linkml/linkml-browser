@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Analysis Review Help</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', sans-serif; color: #111827; margin: 0; }
+    header { background: #0f172a; color: white; padding: 28px 32px; }
+    header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    header p { margin: 0; opacity: 0.8; }
+    main { padding: 24px 32px 40px; max-width: 900px; }
+    h2 { margin-top: 28px; font-size: 1.1rem; color: #0f172a; }
+    ul { padding-left: 20px; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #e2e8f0; font-size: 0.75rem; margin-right: 6px; }
+    .note { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sentiment Analysis Review Help</h1>
+    <p>Guide for evaluating sentiment model predictions</p>
+  </header>
+  <main>
+    <h2>Project overview</h2>
+    <p>This project focuses on human evaluation of sentiment predictions. Each card shows the original text and the model’s predicted sentiment label with a confidence score.</p>
+
+    <h2>How to review</h2>
+    <ul>
+      <li>Read the text and the predicted sentiment label.</li>
+      <li>Use the thumbs-up/down on the card to mark whether the prediction is correct.</li>
+      <li>Add a note if the example is nuanced or requires follow-up.</li>
+    </ul>
+
+    <h2>Evaluation fields</h2>
+    <ul>
+      <li><strong>Thumbs up/down</strong>: quick correctness signal.</li>
+      <li><strong>Reviewer Notes</strong>: short rationale or corrections.</li>
+    </ul>
+
+    <h2>Status</h2>
+    <ul>
+      <li><span class="pill">pending</span> no evaluation yet</li>
+      <li><span class="pill">draft</span> some evaluation data entered</li>
+      <li><span class="pill">submitted</span> explicitly submitted</li>
+      <li><span class="pill">discarded</span> explicitly discarded</li>
+    </ul>
+
+    <h2>Saving evaluations</h2>
+    <div class="note">
+      <p><strong>Desktop app:</strong> choose “Save Evaluations As…” once to set the autosave file. Changes write to that file automatically.</p>
+      <p><strong>Browser:</strong> evaluations are stored in localStorage. Use Export Evaluations to download a JSON file.</p>
+    </div>
+  </main>
+</body>
+</html>

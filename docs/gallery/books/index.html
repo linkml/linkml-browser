@@ -12,66 +12,87 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(170deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #fafafa;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .header {
-            background: linear-gradient(45deg, #2d3748, #4a5568);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 30px;
-            text-align: center;
+            padding: 40px 30px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(35deg);
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            position: relative;
         }
 
         .header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
+            opacity: 0.95;
+            font-size: 1rem;
+            font-weight: 400;
+            position: relative;
         }
 
         .search-container {
-            padding: 30px;
-            background: #f7fafc;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 30px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
 
         .search-box {
             flex: 1;
-            padding: 15px 20px;
-            font-size: 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
             outline: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            background: white;
         }
 
         .search-box:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .performance-info {
-            font-size: 14px;
-            color: #666;
+            font-size: 13px;
+            color: #6b7280;
             font-weight: 500;
+            font-family: 'SF Mono', 'Monaco', monospace;
         }
 
         .main-content {
@@ -80,45 +101,49 @@
         }
 
         .sidebar {
-            width: 300px;
-            background: #f7fafc;
-            padding: 30px;
-            border-right: 1px solid #e2e8f0;
+            width: 280px;
+            background: #f9fafb;
+            padding: 24px;
+            border-right: 1px solid #e5e7eb;
         }
 
         .facet-group {
-            margin-bottom: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
             overflow: hidden;
+            background: white;
         }
 
         .facet-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px;
-            background: #f7fafc;
+            padding: 12px 16px;
+            background: white;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.15s ease;
+            border-bottom: 1px solid #f3f4f6;
         }
 
         .facet-header:hover {
-            background: #edf2f7;
+            background: #f9fafb;
         }
 
         .facet-title {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #2d3748;
+            color: #111827;
             margin: 0;
+            letter-spacing: -0.2px;
         }
 
         .facet-toggle {
-            font-size: 1.2rem;
-            color: #667eea;
+            font-size: 0.9rem;
+            color: #10b981;
             transition: transform 0.2s ease;
+            font-weight: 600;
         }
 
         .facet-toggle.collapsed {
@@ -141,76 +166,175 @@
         .facet-item {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
+            margin-bottom: 6px;
+            padding: 7px 12px;
+            border-radius: 4px;
+            transition: all 0.15s ease;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .facet-item:hover {
-            background: #e2e8f0;
+            background: #f3f4f6;
         }
 
         .facet-item.active {
-            background: #667eea;
+            background: #10b981;
             color: white;
         }
 
         .facet-checkbox {
             margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            accent-color: #667eea;
+            width: 16px;
+            height: 16px;
+            accent-color: #10b981;
+            cursor: pointer;
         }
 
         .facet-count {
             margin-left: auto;
-            background: #e2e8f0;
-            color: #4a5568;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 12px;
+            background: #f3f4f6;
+            color: #6b7280;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 11px;
             font-weight: 600;
+            min-width: 24px;
+            text-align: center;
         }
 
         .facet-item.active .facet-count {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
             color: white;
         }
 
         .results-area {
             flex: 1;
-            padding: 30px;
+            padding: 24px;
+            background: white;
         }
 
         .results-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .dataset-path {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 4px;
+            word-break: break-all;
         }
 
         .results-count {
-            font-size: 1.1rem;
-            color: #4a5568;
+            font-size: 1rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 12px;
+            width: min(520px, 92vw);
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
+            padding: 20px 22px;
+        }
+
+        .modal-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .modal-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .modal-field label {
+            font-size: 0.82rem;
+            color: #374151;
+        }
+
+        .modal-field input,
+        .modal-field select {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .modal-actions .curation-action-btn {
+            font-size: 0.85rem;
+        }
+
+        .modal-help {
+            font-size: 0.78rem;
+            color: #6b7280;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .help-modal-card {
+            width: min(860px, 94vw);
+            max-height: 86vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .help-modal-body {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+        }
+
+        .help-modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .clear-filters {
-            background: #e53e3e;
+            background: #ef4444;
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 7px 14px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s ease;
         }
 
         .clear-filters:hover {
-            background: #c53030;
+            background: #dc2626;
+            transform: translateY(-1px);
         }
 
         .results-grid {
@@ -220,18 +344,19 @@
         }
 
         .result-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            background: #fafafa;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
             overflow: hidden;
-            border: 1px solid #e2e8f0;
-            padding: 20px;
+            border: 1px solid #e5e7eb;
+            padding: 16px;
         }
 
         .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #10b981;
         }
 
         .field-display {
@@ -240,14 +365,31 @@
 
         .field-label {
             font-weight: 600;
-            color: #4a5568;
+            color: #6b7280;
             margin-right: 8px;
             display: inline-block;
             min-width: 80px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .field-value {
-            color: #2d3748;
+            color: #111827;
+            font-size: 0.9rem;
+        }
+
+        .linkml-link,
+        .result-card a,
+        .facet-item a {
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .linkml-link:hover,
+        .result-card a:hover,
+        .facet-item a:hover {
+            text-decoration: underline;
         }
 
         .array-values {
@@ -258,12 +400,13 @@
         }
 
         .array-item {
-            background: #e2e8f0;
-            color: #4a5568;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
             padding: 3px 8px;
-            border-radius: 12px;
+            border-radius: 3px;
             font-size: 11px;
-            font-weight: 500;
+            font-weight: 600;
+            border: 1px solid #6ee7b7;
         }
 
         .no-results {
@@ -273,46 +416,291 @@
             grid-column: 1 / -1;
         }
 
-        /* Numeric filter styles */
-        .numeric-filter-container {
-            padding: 10px 0;
-        }
-
-        .numeric-range-info {
-            font-size: 12px;
-            color: #718096;
-            margin-bottom: 12px;
+        .load-more-container {
+            grid-column: 1 / -1;
             text-align: center;
+            padding: 20px;
         }
 
-        .numeric-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .numeric-input {
-            width: 80px;
-            padding: 8px 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+        .load-more-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            cursor: pointer;
             font-size: 14px;
-            text-align: center;
-            outline: none;
+            font-weight: 600;
             transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .load-more-info {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .facet-show-more {
+            padding: 8px 12px;
+            margin-top: 8px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #10b981;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.15s ease;
+        }
+
+        .facet-show-more:hover {
+            background: #e5e7eb;
+        }
+
+        /* Numeric filter styles - Range Slider */
+        .numeric-filter-container {
+            padding: 15px 10px 25px 10px;
+        }
+
+        .range-slider-wrapper {
+            position: relative;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .range-slider-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            transform: translateY(-50%);
+        }
+
+        .range-slider-range {
+            position: absolute;
+            top: 50%;
+            height: 6px;
+            background: #10b981;
+            border-radius: 3px;
+            transform: translateY(-50%);
+        }
+
+        .range-slider-handle {
+            position: absolute;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            z-index: 2;
+            transition: box-shadow 0.15s ease, transform 0.1s ease;
+        }
+
+        .range-slider-handle:hover {
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .range-slider-handle:active {
+            cursor: grabbing;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25);
+        }
+
+        .range-slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .range-slider-label {
+            font-weight: 500;
+        }
+
+        .range-slider-clear {
+            position: absolute;
+            top: -2px;
+            right: 0;
+            font-size: 12px;
+            color: #10b981;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px 6px;
+            font-weight: 500;
+        }
+
+        .range-slider-clear:hover {
+            text-decoration: underline;
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .curation-action-btn {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .curation-action-btn:hover {
+            background: #0284c7;
+            transform: translateY(-1px);
+        }
+
+        .curation-action-btn.secondary {
+            background: #64748b;
+        }
+
+        .curation-action-btn.secondary:hover {
+            background: #475569;
+        }
+
+        .curation-panel {
+            margin-top: 12px;
+            padding: 12px;
+            border-top: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        .curation-header {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .curation-field {
+            margin-bottom: 10px;
+        }
+
+        .curation-section {
+            margin-bottom: 8px;
+        }
+
+        .curation-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+
+        .curation-input,
+        .curation-select,
+        .curation-textarea {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 0.85rem;
             background: white;
         }
 
-        .numeric-input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        .curation-textarea {
+            min-height: 70px;
+            resize: vertical;
         }
 
-        .numeric-separator {
-            color: #718096;
-            font-weight: 500;
-            font-size: 16px;
+        .curation-multiselect {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .curation-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: #374151;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .curation-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .curation-save-state {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-left: auto;
+        }
+
+        .curation-status {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .curation-status.pending { background: #e2e8f0; color: #475569; }
+        .curation-status.draft { background: #fde68a; color: #92400e; }
+        .curation-status.submitted { background: #bbf7d0; color: #166534; }
+        .curation-status.discarded { background: #fecaca; color: #991b1b; }
+
+        .curation-decorators {
+            margin-top: 6px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .curation-thumb,
+        .curation-rating-star {
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+            font-size: 0.85rem;
+            padding: 4px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .curation-thumb.active,
+        .curation-rating-star.active {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        .curation-rating {
+            display: flex;
+            gap: 4px;
         }
 
         @media (max-width: 768px) {
@@ -345,8 +733,19 @@
 
             <div class="results-area">
                 <div class="results-header">
-                    <div class="results-count" id="resultsCount">Loading...</div>
-                    <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+                    <div>
+                        <div class="results-count" id="resultsCount">Loading...</div>
+                        <div class="dataset-path" id="datasetPath"></div>
+                        <div class="dataset-path" id="annotationsPath"></div>
+                    </div>
+                    <div class="results-actions">
+                        <button class="curation-action-btn secondary" id="openDataset">Open Project</button>
+                        <button class="curation-action-btn secondary" id="openDatasetGithub">Open Project from GitHub</button>
+                        <button class="curation-action-btn" id="exportAnnotations">Export Evaluations</button>
+                        <button class="curation-action-btn secondary" id="importAnnotations">Import Evaluations</button>
+                        <input type="file" id="importAnnotationsFile" accept="application/json" style="display: none;">
+                        <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+                    </div>
                 </div>
                 <div class="results-grid" id="resultsGrid"></div>
             </div>
@@ -368,12 +767,32 @@
                 this.schema = schema;
                 this.currentFilters = {};
                 this.currentQuery = '';
-                
+
                 // Track collapsed facets
                 this.collapsedFacets = new Set();
-                
-                // Track slider timeout
-                this.sliderTimeout = null;
+
+                // Pagination settings
+                this.itemsPerPage = schema.itemsPerPage || 50;
+                this.displayedCount = this.itemsPerPage;
+                this.currentFilteredData = [];
+
+                // Facet pagination settings
+                this.facetItemsToShow = schema.facetItemsToShow || 10;
+                this.expandedFacets = new Set();
+                this.currentFacetCounts = null;
+
+                // Curation state
+                this.curationEnabled = false;
+                this.curationFields = [];
+                this.annotations = {};
+                this.recordIdField = null;
+                this.recordIndexById = new Map();
+                this.curatorId = null;
+                this.datasetHash = null;
+                this.annotationSavePath = null;
+                this.curationLayout = 'inline';
+                this.allowedStatuses = ['pending', 'draft', 'submitted', 'discarded'];
+                this.initializeCuration();
                 
                 try {
                     console.log('📚 Building search index...');
@@ -394,6 +813,1262 @@
                     console.error('❌ Error in constructor:', error);
                     throw error;
                 }
+            }
+
+            initializeCuration() {
+                const hasCurationFields = Array.isArray(this.schema.curationFields) && this.schema.curationFields.length > 0;
+                const hasDecorators = Array.isArray(this.schema.displayFields) &&
+                    this.schema.displayFields.some(field => Array.isArray(field.decorators) && field.decorators.length > 0);
+                this.curationEnabled = hasCurationFields || hasDecorators;
+
+                if (!this.curationEnabled) {
+                    this.toggleCurationUI(false);
+                    return;
+                }
+
+                if (!this.schema.recordIdField) {
+                    console.warn('Curation enabled but recordIdField is missing. Disabling curation.');
+                    this.curationEnabled = false;
+                    this.toggleCurationUI(false);
+                    return;
+                }
+
+                this.recordIdField = this.schema.recordIdField;
+                this.curationLayout = (this.schema.curation && this.schema.curation.layout) || 'inline';
+                this.curationFields = Array.isArray(this.schema.curationFields) ? this.schema.curationFields : [];
+                if (this.curationLayout === 'split') {
+                    console.warn('Split curation layout is not implemented yet. Falling back to inline.');
+                    this.curationLayout = 'inline';
+                }
+
+                this.buildRecordIndex();
+                this.datasetHash = this.computeDatasetHash();
+                this.loadAnnotationSavePath();
+                this.annotations = this.loadAnnotationsFromStorage();
+                this.ensureStatusFacet();
+                this.toggleCurationUI(true);
+                this.updateAnnotationsPathUI();
+                this.syncRecentMenus();
+            }
+
+            toggleCurationUI(enabled) {
+                const exportBtn = document.getElementById('exportAnnotations');
+                const importBtn = document.getElementById('importAnnotations');
+                const usingNativeMenu = this.isNativeMenuEnabled();
+                if (exportBtn) {
+                    exportBtn.style.display = enabled && !usingNativeMenu ? 'inline-flex' : 'none';
+                    if (enabled) {
+                        exportBtn.textContent = window.__TAURI__ ? 'Save As…' : 'Export Evaluations';
+                    }
+                }
+                if (importBtn) {
+                    importBtn.style.display = enabled && !usingNativeMenu ? 'inline-flex' : 'none';
+                    if (enabled && window.__TAURI__) {
+                        importBtn.textContent = 'Open Evaluations…';
+                    } else if (enabled) {
+                        importBtn.textContent = 'Import Evaluations';
+                    }
+                }
+            }
+
+            updateAnnotationsPathUI() {
+                const el = document.getElementById('annotationsPath');
+                if (!el) return;
+                if (!this.curationEnabled) {
+                    el.textContent = '';
+                    return;
+                }
+                if (this.annotationSavePath) {
+                    el.textContent = `Evaluations (autosave): ${this.annotationSavePath}`;
+                    return;
+                }
+                if (window.__TAURI__) {
+                    el.textContent = 'Evaluations: browser storage (no autosave file set)';
+                } else {
+                    el.textContent = `Evaluations: browser storage (${this.getStorageKey()})`;
+                }
+            }
+
+            isNativeMenuEnabled() {
+                return !!(window.__TAURI__ && window.__TAURI__.event);
+            }
+
+            buildRecordIndex() {
+                this.recordIndexById = new Map();
+                this.originalData.forEach((item, idx) => {
+                    const recordId = this.getRecordId(item);
+                    if (recordId) {
+                        this.recordIndexById.set(recordId, idx);
+                    } else {
+                        console.warn('Missing recordId for item at index', idx);
+                    }
+                });
+            }
+
+            ensureStatusFacet() {
+                const statusFacetDisabled = this.schema.curation && this.schema.curation.statusFacet === false;
+                if (statusFacetDisabled) {
+                    return;
+                }
+                const statusField = '__curation_status';
+                const statusLabel = (this.schema.curation && this.schema.curation.statusFacetLabel) || 'Evaluation Status';
+                const hasStatusFacet = this.schema.facets.some(facet => facet.field === statusField);
+                if (!hasStatusFacet) {
+                    this.schema.facets.unshift({
+                        field: statusField,
+                        label: statusLabel,
+                        type: 'string',
+                        sortBy: 'alphabetical'
+                    });
+                }
+            }
+
+            getRecordId(item) {
+                if (!this.recordIdField) return null;
+                const value = item[this.recordIdField];
+                if (value === undefined || value === null) return null;
+                return String(value);
+            }
+
+            computeDatasetHash() {
+                const base = `${this.schema.title || ''}|${this.recordIdField || ''}|${this.originalData.length}`;
+                let hash = 2166136261;
+                hash = this.hashString(hash, base);
+                this.originalData.forEach(item => {
+                    const recordId = this.getRecordId(item);
+                    if (recordId) {
+                        hash = this.hashString(hash, recordId);
+                    }
+                });
+                return `fnv1a:${(hash >>> 0).toString(16)}`;
+            }
+
+            hashString(hash, value) {
+                let h = hash;
+                for (let i = 0; i < value.length; i++) {
+                    h ^= value.charCodeAt(i);
+                    h = (h >>> 0) * 16777619;
+                }
+                return h >>> 0;
+            }
+
+            getStorageKey() {
+                return `linkml_browser_annotations::${this.datasetHash || 'default'}`;
+            }
+
+            getAnnotationPathKey() {
+                return `linkml_browser_annotations_path::${this.datasetHash || 'default'}`;
+            }
+
+            normalizePathValue(path) {
+                if (!path) return null;
+                if (typeof path === 'string') return path;
+                if (typeof path === 'object' && typeof path.path === 'string') return path.path;
+                return null;
+            }
+
+            loadAnnotationSavePath() {
+                const stored = localStorage.getItem(this.getAnnotationPathKey());
+                this.annotationSavePath = stored || null;
+                return this.annotationSavePath;
+            }
+
+            setAnnotationSavePath(path) {
+                const normalized = this.normalizePathValue(path);
+                if (normalized && normalized.trim()) {
+                    this.annotationSavePath = normalized;
+                    localStorage.setItem(this.getAnnotationPathKey(), normalized);
+                } else {
+                    this.annotationSavePath = null;
+                    localStorage.removeItem(this.getAnnotationPathKey());
+                }
+                this.updateAnnotationsPathUI();
+            }
+
+            loadAnnotationsFromStorage() {
+                const stored = localStorage.getItem(this.getStorageKey());
+                if (!stored) return {};
+                try {
+                    const parsed = JSON.parse(stored);
+                    const annotations = parsed.annotations || parsed;
+                    if (Array.isArray(annotations)) {
+                        const result = {};
+                        annotations.forEach(entry => {
+                            if (!entry || !entry.recordId) return;
+                            const normalized = this.normalizeAnnotation(entry);
+                            result[normalized.recordId] = normalized;
+                        });
+                        return result;
+                    }
+                    if (annotations && typeof annotations === 'object') {
+                        const result = {};
+                        Object.values(annotations).forEach(entry => {
+                            if (!entry || !entry.recordId) return;
+                            const normalized = this.normalizeAnnotation(entry);
+                            result[normalized.recordId] = normalized;
+                        });
+                        return result;
+                    }
+                } catch (error) {
+                    console.warn('Failed to parse stored annotations', error);
+                }
+                return {};
+            }
+
+            buildAnnotationsPayload(options = {}) {
+                const includeRecord = options.includeRecord === true;
+                const timestampLabel = options.timestampLabel || 'updatedAt';
+                const payload = {
+                    schemaVersion: 1,
+                    datasetHash: this.datasetHash
+                };
+                payload[timestampLabel] = new Date().toISOString();
+                if (includeRecord) {
+                    payload.annotations = Object.values(this.annotations).map(entry => {
+                        const record = this.getRecordById(entry.recordId);
+                        return record ? { ...entry, record } : entry;
+                    });
+                } else {
+                    payload.annotations = this.annotations;
+                }
+                return payload;
+            }
+
+            saveAnnotationsToStorage() {
+                const payload = this.buildAnnotationsPayload({ includeRecord: false, timestampLabel: 'updatedAt' });
+                localStorage.setItem(this.getStorageKey(), JSON.stringify(payload));
+                this.saveAnnotationsToFile();
+            }
+
+            async saveAnnotationsToFile() {
+                if (!window.__TAURI__ || !window.__TAURI__.fs) return;
+                if (!this.annotationSavePath) return;
+                try {
+                    const payload = this.buildAnnotationsPayload({ includeRecord: true, timestampLabel: 'updatedAt' });
+                    await window.__TAURI__.fs.writeTextFile(this.annotationSavePath, JSON.stringify(payload, null, 2));
+                    this.updateAnnotationsPathUI();
+                } catch (error) {
+                    console.warn('Failed to autosave annotations file', error);
+                }
+            }
+
+            normalizeAnnotation(entry) {
+                const recordId = String(entry.recordId);
+                const data = entry.data && typeof entry.data === 'object' ? entry.data : {};
+                const status = this.allowedStatuses.includes(entry.status) ? entry.status : this.computeStatusFromData(data);
+                return {
+                    recordId,
+                    curatorId: entry.curatorId || this.curatorId || null,
+                    updatedAt: entry.updatedAt || new Date().toISOString(),
+                    status,
+                    data
+                };
+            }
+
+            computeStatusFromData(data) {
+                if (!data) return 'pending';
+                const hasValues = Object.values(data).some(value => {
+                    if (Array.isArray(value)) return value.length > 0;
+                    return value !== null && value !== undefined && value !== '';
+                });
+                return hasValues ? 'draft' : 'pending';
+            }
+
+            ensureCuratorId() {
+                if (this.curatorId) return this.curatorId;
+                const stored = localStorage.getItem('linkml_browser_curator_id');
+                if (stored) {
+                    this.curatorId = stored;
+                    return stored;
+                }
+                const promptValue = window.prompt('Enter curator ID (optional):');
+                if (promptValue && promptValue.trim()) {
+                    const trimmed = promptValue.trim();
+                    localStorage.setItem('linkml_browser_curator_id', trimmed);
+                    this.curatorId = trimmed;
+                    return trimmed;
+                }
+                this.curatorId = 'local';
+                return this.curatorId;
+            }
+
+            getAnnotation(recordId) {
+                return this.annotations[recordId] || null;
+            }
+
+            ensureAnnotation(recordId) {
+                const key = String(recordId);
+                let annotation = this.annotations[key];
+                if (!annotation) {
+                    annotation = {
+                        recordId: key,
+                        curatorId: this.ensureCuratorId(),
+                        updatedAt: new Date().toISOString(),
+                        status: 'draft',
+                        data: {}
+                    };
+                    this.annotations[key] = annotation;
+                }
+                if (!annotation.data || typeof annotation.data !== 'object') {
+                    annotation.data = {};
+                }
+                if (!annotation.curatorId) {
+                    annotation.curatorId = this.ensureCuratorId();
+                }
+                return annotation;
+            }
+
+            getCurationStatus(recordId) {
+                const annotation = this.annotations[recordId];
+                if (!annotation) return 'pending';
+                if (annotation.status && this.allowedStatuses.includes(annotation.status)) {
+                    return annotation.status;
+                }
+                return this.computeStatusFromData(annotation.data);
+            }
+
+            getCurationStatusForItem(item) {
+                const recordId = this.getRecordId(item);
+                if (!recordId) return 'pending';
+                return this.getCurationStatus(recordId);
+            }
+
+            getRecordById(recordId) {
+                const idx = this.recordIndexById.get(recordId);
+                if (idx === undefined) return null;
+                return this.originalData[idx] || null;
+            }
+
+            updateStatusFacetIndex(recordId, oldStatus, newStatus) {
+                if (!this.facetIndex || !this.facetIndex['__curation_status']) return;
+                const idx = this.recordIndexById.get(recordId);
+                if (idx === undefined) return;
+                if (oldStatus && this.facetIndex['__curation_status'].has(oldStatus)) {
+                    this.facetIndex['__curation_status'].get(oldStatus).delete(idx);
+                }
+                if (!this.facetIndex['__curation_status'].has(newStatus)) {
+                    this.facetIndex['__curation_status'].set(newStatus, new Set());
+                }
+                this.facetIndex['__curation_status'].get(newStatus).add(idx);
+            }
+
+            async exportAnnotations() {
+                if (!this.curationEnabled) return;
+                const payload = this.buildAnnotationsPayload({ includeRecord: true, timestampLabel: 'exportedAt' });
+                const json = JSON.stringify(payload, null, 2);
+                const filename = `evaluations_${this.datasetHash || 'export'}.json`;
+
+                if (window.__TAURI__ && window.__TAURI__.dialog && window.__TAURI__.fs) {
+                    try {
+                        const { save } = window.__TAURI__.dialog;
+                        const { writeTextFile } = window.__TAURI__.fs;
+                        if (save && writeTextFile) {
+                            const path = await save({
+                                defaultPath: filename,
+                                filters: [{ name: 'JSON', extensions: ['json'] }]
+                            });
+                            if (path) {
+                                await writeTextFile(path, json);
+                                this.setAnnotationSavePath(path);
+                                this.addRecentEvaluation(path);
+                                return;
+                            }
+                        }
+                    } catch (error) {
+                        console.warn('Tauri export failed, falling back to browser download', error);
+                    }
+                }
+
+                this.downloadBlob(json, filename);
+            }
+
+            downloadBlob(contents, filename) {
+                const blob = new Blob([contents], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+
+            async openDatasetDialog() {
+                if (!window.__TAURI__ || !window.__TAURI__.dialog) {
+                    return;
+                }
+                try {
+                    const { open } = window.__TAURI__.dialog;
+                    const selected = await open({ directory: true, multiple: false });
+                    if (!selected) return;
+                    const selectedPath = Array.isArray(selected) ? selected[0] : selected;
+                    if (!selectedPath) return;
+                    localStorage.removeItem('linkml_browser_dataset_error');
+                    localStorage.setItem('linkml_browser_dataset_path', selectedPath);
+                    this.addRecentProject(selectedPath);
+                    window.location.reload();
+                } catch (error) {
+                    console.error('Failed to open project folder', error);
+                    alert('Failed to open project folder.');
+                }
+            }
+
+            async openAnnotationsDialog() {
+                if (!this.curationEnabled) return;
+                if (!window.__TAURI__ || !window.__TAURI__.dialog || !window.__TAURI__.fs) {
+                    return;
+                }
+                try {
+                    const { open } = window.__TAURI__.dialog;
+                    const selected = await open({
+                        multiple: false,
+                        filters: [{ name: 'JSON', extensions: ['json'] }]
+                    });
+                    if (!selected) return;
+                    const filePath = Array.isArray(selected) ? selected[0] : selected;
+                    const normalizedPath = this.normalizePathValue(filePath);
+                    if (!normalizedPath) return;
+                    await this.loadEvaluationsFromPath(normalizedPath);
+                } catch (error) {
+                    console.error('Failed to open evaluations file', error);
+                    alert('Failed to open evaluations file.');
+                }
+            }
+
+            async loadEvaluationsFromPath(path) {
+                if (!this.curationEnabled) return;
+                if (!window.__TAURI__ || !window.__TAURI__.fs) {
+                    alert('Opening evaluations from a file is only available in the desktop app.');
+                    return;
+                }
+                try {
+                    const { readTextFile } = window.__TAURI__.fs;
+                    const text = await readTextFile(path);
+                    await this.importAnnotationsFromText(text, path);
+                } catch (error) {
+                    console.error('Failed to read evaluations file', error);
+                    alert('Failed to read evaluations file.');
+                }
+            }
+
+            getRecentProjectsKey() {
+                return 'linkml_browser_recent_projects';
+            }
+
+            getRecentEvaluationsKey() {
+                return 'linkml_browser_recent_evaluations';
+            }
+
+            getRecentList(key) {
+                const stored = localStorage.getItem(key);
+                if (!stored) return [];
+                try {
+                    const parsed = JSON.parse(stored);
+                    return Array.isArray(parsed) ? parsed : [];
+                } catch (error) {
+                    return [];
+                }
+            }
+
+            setRecentList(key, list) {
+                localStorage.setItem(key, JSON.stringify(list));
+            }
+
+            addRecentItem(key, value) {
+                if (!value) return;
+                const list = this.getRecentList(key);
+                const filtered = list.filter(item => item !== value);
+                filtered.unshift(value);
+                this.setRecentList(key, filtered.slice(0, 8));
+                this.syncRecentMenus();
+            }
+
+            addRecentProject(path) {
+                this.addRecentItem(this.getRecentProjectsKey(), path);
+            }
+
+            addRecentEvaluation(path) {
+                this.addRecentItem(this.getRecentEvaluationsKey(), path);
+            }
+
+            async openRecentProject() {
+                const selected = await this.promptRecentItem('Open Recent Project', this.getRecentProjectsKey());
+                if (!selected) return;
+                localStorage.removeItem('linkml_browser_dataset_error');
+                localStorage.setItem('linkml_browser_dataset_path', selected);
+                this.addRecentProject(selected);
+                window.location.reload();
+            }
+
+            async openRecentEvaluations() {
+                const selected = await this.promptRecentItem('Open Recent Evaluations', this.getRecentEvaluationsKey());
+                if (!selected) return;
+                await this.loadEvaluationsFromPath(selected);
+            }
+
+            async promptRecentItem(title, key) {
+                const items = this.getRecentList(key);
+                if (items.length === 0) {
+                    alert('No recent items.');
+                    return null;
+                }
+                const result = await this.showListModal(title, items);
+                return result || null;
+            }
+
+            async syncRecentMenus() {
+                if (!window.__TAURI__ || !window.__TAURI__.core || !window.__TAURI__.core.invoke) {
+                    return;
+                }
+                const projects = this.getRecentList(this.getRecentProjectsKey());
+                const evaluations = this.getRecentList(this.getRecentEvaluationsKey());
+                try {
+                    await window.__TAURI__.core.invoke('set_recent_menus', { projects, evaluations });
+                } catch (error) {
+                    console.warn('Failed to sync recent menus', error);
+                }
+            }
+
+            async promptGithubProject() {
+                const defaults = {
+                    repo: localStorage.getItem('linkml_browser_github_repo') || '',
+                    ref: localStorage.getItem('linkml_browser_github_ref') || 'main',
+                    subdir: localStorage.getItem('linkml_browser_github_subdir') || 'app'
+                };
+                let downloadHint = 'Downloaded into the app data directory (datasets/).';
+                if (window.__TAURI__ && window.__TAURI__.path && window.__TAURI__.path.appDataDir) {
+                    try {
+                        const base = await window.__TAURI__.path.appDataDir();
+                        downloadHint = `Downloaded into: ${base}datasets/`;
+                    } catch (error) {
+                        // ignore and use default hint
+                    }
+                }
+                const result = await this.showFormModal('Open Project from GitHub', [
+                    { name: 'repo', label: 'Repository (owner/repo or URL)', value: defaults.repo, placeholder: 'monarch-initiative/dismech' },
+                    { name: 'ref', label: 'Branch or tag', value: defaults.ref },
+                    { name: 'subdir', label: 'Project subdirectory', value: defaults.subdir }
+                ], 'Open', downloadHint);
+                if (result) {
+                    localStorage.setItem('linkml_browser_github_repo', result.repo || '');
+                    localStorage.setItem('linkml_browser_github_ref', result.ref || '');
+                    localStorage.setItem('linkml_browser_github_subdir', result.subdir || '');
+                }
+                return result;
+            }
+
+            createModalShell(title) {
+                const overlay = document.createElement('div');
+                overlay.className = 'modal-overlay';
+                overlay.innerHTML = `
+                    <div class="modal-card">
+                        <div class="modal-title">${title}</div>
+                        <div class="modal-body"></div>
+                    </div>
+                `;
+                const body = overlay.querySelector('.modal-body');
+                document.body.appendChild(overlay);
+                const cleanup = () => overlay.remove();
+                overlay.addEventListener('click', (event) => {
+                    if (event.target === overlay) {
+                        cleanup();
+                    }
+                });
+                return { overlay, body, cleanup };
+            }
+
+            showFormModal(title, fields, submitLabel, helpText) {
+                return new Promise(resolve => {
+                    const { body, cleanup } = this.createModalShell(title);
+                    const form = document.createElement('form');
+                    form.innerHTML = fields.map(field => `
+                        <div class="modal-field">
+                            <label for="modal-${field.name}">${field.label}</label>
+                            <input id="modal-${field.name}" name="${field.name}" type="text"
+                                   value="${field.value || ''}" placeholder="${field.placeholder || ''}">
+                        </div>
+                    `).join('');
+                    if (helpText) {
+                        const help = document.createElement('div');
+                        help.className = 'modal-help';
+                        help.textContent = helpText;
+                        form.appendChild(help);
+                    }
+                    const actions = document.createElement('div');
+                    actions.className = 'modal-actions';
+                    actions.innerHTML = `
+                        <button type="button" class="curation-action-btn secondary">Cancel</button>
+                        <button type="submit" class="curation-action-btn">${submitLabel || 'OK'}</button>
+                    `;
+                    const [cancelBtn] = actions.querySelectorAll('button');
+                    cancelBtn.addEventListener('click', () => {
+                        cleanup();
+                        resolve(null);
+                    });
+                    form.addEventListener('submit', (event) => {
+                        event.preventDefault();
+                        const data = {};
+                        fields.forEach(field => {
+                            const input = form.querySelector(`input[name="${field.name}"]`);
+                            data[field.name] = input ? input.value.trim() : '';
+                        });
+                        cleanup();
+                        resolve(data);
+                    });
+                    form.appendChild(actions);
+                    body.appendChild(form);
+                    const firstInput = form.querySelector('input');
+                    if (firstInput) {
+                        firstInput.focus();
+                        firstInput.select();
+                    }
+                });
+            }
+
+            showListModal(title, items) {
+                return new Promise(resolve => {
+                    const { body, cleanup } = this.createModalShell(title);
+                    const list = document.createElement('div');
+                    list.className = 'modal-field';
+                    list.innerHTML = items.map(item => `
+                        <button type="button" class="curation-action-btn secondary" data-value="${item}">
+                            ${item}
+                        </button>
+                    `).join('');
+                    list.querySelectorAll('button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const value = button.dataset.value;
+                            cleanup();
+                            resolve(value || null);
+                        });
+                    });
+                    const actions = document.createElement('div');
+                    actions.className = 'modal-actions';
+                    actions.innerHTML = `
+                        <button type="button" class="curation-action-btn secondary">Cancel</button>
+                    `;
+                    actions.querySelector('button').addEventListener('click', () => {
+                        cleanup();
+                        resolve(null);
+                    });
+                    body.appendChild(list);
+                    body.appendChild(actions);
+                });
+            }
+
+            parseGithubRepo(input) {
+                let trimmed = (input || '').trim();
+                if (!trimmed) return null;
+                const sshMatch = trimmed.match(/^git@github\\.com:(.+)$/i);
+                if (sshMatch) {
+                    trimmed = sshMatch[1];
+                }
+                if (trimmed.includes('github.com')) {
+                    try {
+                        const url = new URL(trimmed);
+                        const parts = url.pathname.replace(/^\/|\/$/g, '').split('/');
+                        if (parts.length >= 2) {
+                            const owner = parts[0];
+                            let repo = parts[1];
+                            if (repo.endsWith('.git')) {
+                                repo = repo.slice(0, -4);
+                            }
+                            return { owner, repo };
+                        }
+                    } catch (error) {
+                        return null;
+                    }
+                }
+                if (trimmed.includes('/')) {
+                    const parts = trimmed.replace(/^\/|\/$/g, '').split('/');
+                    if (parts.length >= 2) {
+                        const owner = parts[0];
+                        let repo = parts[1];
+                        if (repo.endsWith('.git')) {
+                            repo = repo.slice(0, -4);
+                        }
+                        if (owner && repo) return { owner, repo };
+                    }
+                }
+                return null;
+            }
+
+            async openDatasetFromGithub() {
+                if (!window.__TAURI__ || !window.__TAURI__.fs || !window.__TAURI__.path) {
+                    alert('GitHub import is only available in the desktop app.');
+                    return;
+                }
+                const input = await this.promptGithubProject();
+                if (!input) return;
+                const parsed = this.parseGithubRepo(input.repo);
+                if (!parsed) {
+                    alert('Invalid repository. Example: monarch-initiative/dismech');
+                    return;
+                }
+
+                const ref = input.ref || 'main';
+                const subdir = input.subdir || 'app';
+                const base = `https://raw.githubusercontent.com/${parsed.owner}/${parsed.repo}/${ref}`;
+                const prefix = subdir ? `${base}/${subdir}` : base;
+                const files = ['index.html', 'data.js', 'schema.js'];
+
+                try {
+                    const responses = await Promise.all(
+                        files.map(file => fetch(`${prefix}/${file}`))
+                    );
+                    const failed = responses.findIndex(resp => !resp.ok);
+                    if (failed !== -1) {
+                        const resp = responses[failed];
+                        const status = resp.status || 'unknown';
+                        const url = resp.url || `${prefix}/${files[failed]}`;
+                        throw new Error(`Failed to fetch ${files[failed]} (${status}) from ${url}`);
+                    }
+                    const [indexText, dataText, schemaText] = await Promise.all(
+                        responses.map(resp => resp.text())
+                    );
+
+                    const { appDataDir, join } = window.__TAURI__.path;
+                    const { mkdir, writeTextFile } = window.__TAURI__.fs;
+                    const root = await appDataDir();
+                    const safeRef = ref.replace(/[^a-zA-Z0-9._-]/g, '_');
+                    const safeSubdir = subdir.replace(/[^a-zA-Z0-9._-]/g, '_');
+                    const datasetDir = await join(root, 'datasets', `${parsed.owner}-${parsed.repo}-${safeRef}-${safeSubdir}`);
+
+                    await mkdir(datasetDir, { recursive: true });
+                    await writeTextFile(await join(datasetDir, 'index.html'), indexText);
+                    await writeTextFile(await join(datasetDir, 'data.js'), dataText);
+                    await writeTextFile(await join(datasetDir, 'schema.js'), schemaText);
+
+                    localStorage.removeItem('linkml_browser_dataset_error');
+                    localStorage.setItem('linkml_browser_dataset_path', datasetDir);
+                    this.addRecentProject(datasetDir);
+                    window.location.reload();
+                } catch (error) {
+                    console.error('GitHub import failed', error);
+                    const message = error && error.message ? error.message : 'Unknown error';
+                    alert(`Failed to load project from GitHub. ${message}`);
+                }
+            }
+
+            async handleImportFile(event) {
+                if (!this.curationEnabled) return;
+                const file = event.target.files[0];
+                if (!file) return;
+                try {
+                    const text = await file.text();
+                    await this.importAnnotationsFromText(text, null);
+                } finally {
+                    event.target.value = '';
+                }
+            }
+
+            async importAnnotationsFromText(text, sourcePath) {
+                if (!this.curationEnabled) return;
+                try {
+                    const parsed = JSON.parse(text);
+                    const annotations = parsed.annotations || parsed;
+                    const entries = Array.isArray(annotations) ? annotations : Object.values(annotations || {});
+                    entries.forEach(entry => {
+                        if (!entry || !entry.recordId) return;
+                        const normalized = this.normalizeAnnotation(entry);
+                        this.annotations[normalized.recordId] = normalized;
+                    });
+                    if (sourcePath) {
+                        this.setAnnotationSavePath(sourcePath);
+                        this.addRecentEvaluation(sourcePath);
+                    }
+                    this.saveAnnotationsToStorage();
+                    this.facetIndex = this.buildFacetIndex();
+                    this.search();
+                } catch (error) {
+                    console.error('Failed to import evaluations', error);
+                    alert('Failed to import evaluations. Please check the file format.');
+                }
+            }
+
+            setAnnotationStatus(recordId, status) {
+                if (!this.curationEnabled || !this.allowedStatuses.includes(status)) return;
+                const annotation = this.ensureAnnotation(recordId);
+                const previousStatus = this.getCurationStatus(recordId);
+                annotation.status = status;
+                annotation.updatedAt = new Date().toISOString();
+                this.annotations[recordId] = annotation;
+                this.saveAnnotationsToStorage();
+                this.updateStatusFacetIndex(recordId, previousStatus, status);
+                this.updateCurationStatusUI(recordId);
+                this.search();
+            }
+
+            updateAnnotationField(recordId, field, value, options = {}) {
+                if (!this.curationEnabled) return;
+                const deferSearch = options.deferSearch === true;
+                const annotation = this.ensureAnnotation(recordId);
+                const previousStatus = this.getCurationStatus(recordId);
+                if (value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0)) {
+                    delete annotation.data[field];
+                } else {
+                    annotation.data[field] = value;
+                }
+                annotation.updatedAt = new Date().toISOString();
+                annotation.status = this.computeStatusFromData(annotation.data);
+                this.annotations[recordId] = annotation;
+                this.saveAnnotationsToStorage();
+                this.updateStatusFacetIndex(recordId, previousStatus, annotation.status);
+                this.updateCurationStatusUI(recordId);
+                if (deferSearch) {
+                    setTimeout(() => this.search(), 0);
+                } else {
+                    this.search();
+                }
+            }
+
+            getAnnotationValue(recordId, field) {
+                const annotation = this.annotations[recordId];
+                if (!annotation || !annotation.data) return null;
+                return annotation.data[field];
+            }
+
+            formatSaveTimestamp(updatedAt) {
+                if (!updatedAt) return 'Not saved';
+                const timestamp = new Date(updatedAt);
+                if (Number.isNaN(timestamp.getTime())) return 'Not saved';
+                const now = new Date();
+                const sameDay = timestamp.toDateString() === now.toDateString();
+                const timeLabel = timestamp.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                if (sameDay) {
+                    return `Saved ${timeLabel}`;
+                }
+                const dateLabel = timestamp.toLocaleDateString([], {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                return `Saved ${dateLabel} ${timeLabel}`;
+            }
+
+            updateCurationStatusUI(recordId) {
+                if (!recordId) return;
+                const status = this.getCurationStatus(recordId);
+                const annotation = this.annotations[recordId];
+                const saveLabel = this.formatSaveTimestamp(annotation && annotation.updatedAt);
+                const safeId = CSS.escape(recordId);
+
+                document.querySelectorAll(`.curation-status[data-record-id="${safeId}"]`).forEach(el => {
+                    el.textContent = status;
+                    el.className = `curation-status ${status}`;
+                });
+
+                document.querySelectorAll(`.curation-save-state[data-record-id="${safeId}"]`).forEach(el => {
+                    el.textContent = saveLabel;
+                });
+            }
+
+            setupTauriMenuListeners() {
+                if (!window.__TAURI__ || !window.__TAURI__.event) return;
+                window.__TAURI__.event.listen('menu-action', (event) => {
+                    const action = event.payload;
+                    switch (action) {
+                        case 'file_open_dataset':
+                            this.openDatasetDialog();
+                            break;
+                        case 'file_open_github':
+                            this.openDatasetFromGithub();
+                            break;
+                        case 'file_open_recent_project':
+                            this.openRecentProject();
+                            break;
+                        case 'file_open_annotations':
+                            this.openAnnotationsDialog();
+                            break;
+                        case 'file_open_recent_evaluations':
+                            this.openRecentEvaluations();
+                            break;
+                        case 'file_save_annotations_as':
+                            this.exportAnnotations();
+                            break;
+                        case 'help_docs':
+                            this.openHelpPage();
+                            break;
+                        case 'help_about':
+                        case 'app_about': {
+                            const title = document.getElementById('appTitle')?.textContent || 'LinkML Browser';
+                            const description = document.getElementById('appDescription')?.textContent || '';
+                            alert(`${title}\n${description}`.trim());
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                });
+            }
+
+            isExternalLink(href) {
+                return /^(https?:|mailto:)/i.test(href);
+            }
+
+            resolveLocalLink(href) {
+                if (!href) return href;
+                if (href.startsWith('file://')) return href;
+                const datasetPath = localStorage.getItem('linkml_browser_dataset_path');
+                const basePath = datasetPath ? `file://${datasetPath.replace(/\\/g, '/')}/` : window.location.href;
+                try {
+                    return new URL(href, basePath).href;
+                } catch (error) {
+                    return href;
+                }
+            }
+
+            async openLink(href) {
+                if (!href) return;
+                const isExternal = this.isExternalLink(href);
+                const target = isExternal ? href : this.resolveLocalLink(href);
+                if (isExternal && window.__TAURI__ && window.__TAURI__.shell && window.__TAURI__.shell.open) {
+                    try {
+                        await window.__TAURI__.shell.open(target);
+                        return true;
+                    } catch (error) {
+                        console.warn('Failed to open link via shell', error);
+                    }
+                }
+                window.open(target, '_blank');
+                return true;
+            }
+
+            async openHelpPage() {
+                const datasetPath = localStorage.getItem('linkml_browser_dataset_path');
+                if (window.__TAURI__ && window.__TAURI__.fs && window.__TAURI__.path && datasetPath) {
+                    try {
+                        const { join } = window.__TAURI__.path;
+                        const helpPath = await join(datasetPath, 'help.html');
+                        const html = await window.__TAURI__.fs.readTextFile(helpPath);
+                        this.showHelpModal(html);
+                        return;
+                    } catch (error) {
+                        console.warn('Project help.html not found, falling back', error);
+                    }
+                }
+                window.open('help.html', '_blank');
+            }
+
+            showHelpModal(html) {
+                const { overlay, body, cleanup } = this.createModalShell('Documentation');
+                const card = overlay.querySelector('.modal-card');
+                if (card) {
+                    card.classList.add('help-modal-card');
+                }
+                const container = document.createElement('div');
+                container.className = 'help-modal-body';
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('sandbox', 'allow-same-origin');
+                iframe.srcdoc = html;
+                container.appendChild(iframe);
+                body.appendChild(container);
+
+                const actions = document.createElement('div');
+                actions.className = 'modal-actions';
+                actions.innerHTML = `
+                    <button type="button" class="curation-action-btn secondary">Close</button>
+                `;
+                actions.querySelector('button').addEventListener('click', cleanup);
+                body.appendChild(actions);
+            }
+
+            getFacetValue(item, facetConfig) {
+                if (facetConfig.field === '__curation_status') {
+                    return this.getCurationStatusForItem(item);
+                }
+                return item[facetConfig.field];
+            }
+
+            handleCurationAction(action, recordId) {
+                if (!recordId) return;
+                if (action === 'submit') {
+                    this.setAnnotationStatus(recordId, 'submitted');
+                } else if (action === 'discard') {
+                    this.setAnnotationStatus(recordId, 'discarded');
+                } else if (action === 'edit' || action === 'resume') {
+                    this.setAnnotationStatus(recordId, 'draft');
+                }
+            }
+
+            handleCurationInputChange(target) {
+                const recordId = target.dataset.recordId;
+                const field = target.dataset.field;
+                const type = target.dataset.type;
+                if (!recordId || !field || !type) return;
+
+                let value = null;
+                if (type === 'text' || type === 'textarea') {
+                    const raw = target.value.trim();
+                    value = raw === '' ? null : raw;
+                } else if (type === 'integer') {
+                    const num = parseInt(target.value, 10);
+                    value = Number.isNaN(num) ? null : num;
+                } else if (type === 'enum') {
+                    value = target.value || null;
+                } else if (type === 'boolean') {
+                    if (target.value === '') {
+                        value = null;
+                    } else {
+                        value = target.value === 'true';
+                    }
+                } else if (type === 'multienum') {
+                    value = this.getMultiSelectValues(recordId, field);
+                }
+
+                this.updateAnnotationField(recordId, field, value, { deferSearch: true });
+            }
+
+            getMultiSelectValues(recordId, field) {
+                const safeId = CSS.escape(recordId);
+                const safeField = CSS.escape(field);
+                const checkboxes = document.querySelectorAll(`input.curation-multienum[data-record-id="${safeId}"][data-field="${safeField}"]`);
+                return Array.from(checkboxes)
+                    .filter(box => box.checked)
+                    .map(box => box.value);
+            }
+
+            renderCurationPanel(recordId) {
+                if (!this.curationEnabled || this.curationFields.length === 0) {
+                    return '';
+                }
+                const status = this.getCurationStatus(recordId);
+                const annotation = this.annotations[recordId];
+                const saveLabel = this.formatSaveTimestamp(annotation && annotation.updatedAt);
+                const sections = this.schema.curation && Array.isArray(this.schema.curation.sections)
+                    ? this.schema.curation.sections
+                    : null;
+
+                let fieldsHtml = '';
+                if (sections) {
+                    fieldsHtml = sections.map(section => {
+                        const sectionFields = (section.fields || [])
+                            .map(fieldName => this.curationFields.find(cfg => cfg.field === fieldName))
+                            .filter(Boolean)
+                            .map(cfg => this.renderCurationField(recordId, cfg))
+                            .join('');
+                        if (!sectionFields) return '';
+                        return `
+                            <div class="curation-section">
+                                <div class="curation-label">${section.label || 'Section'}</div>
+                                ${sectionFields}
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    fieldsHtml = this.curationFields.map(cfg => this.renderCurationField(recordId, cfg)).join('');
+                }
+
+                if (!fieldsHtml) return '';
+
+                let primaryAction = { label: 'Submit', action: 'submit' };
+                let secondaryAction = { label: 'Discard', action: 'discard' };
+
+                if (status === 'submitted') {
+                    primaryAction = { label: 'Edit', action: 'edit' };
+                }
+                if (status === 'discarded') {
+                    secondaryAction = { label: 'Resume', action: 'resume' };
+                }
+
+                return `
+                    <div class="curation-panel">
+                        <div class="curation-header">Curation</div>
+                        ${fieldsHtml}
+                        <div class="curation-actions">
+                            <span class="curation-status ${status}" data-record-id="${recordId}">${status}</span>
+                            <span class="curation-save-state" data-record-id="${recordId}">${saveLabel}</span>
+                            <button class="curation-action-btn curation-action" data-action="${primaryAction.action}" data-record-id="${recordId}">
+                                ${primaryAction.label}
+                            </button>
+                            <button class="curation-action-btn secondary curation-action" data-action="${secondaryAction.action}" data-record-id="${recordId}">
+                                ${secondaryAction.label}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderCurationField(recordId, fieldConfig) {
+                const field = fieldConfig.field;
+                const label = fieldConfig.label || field;
+                const value = this.getAnnotationValue(recordId, field);
+                const type = fieldConfig.type || 'text';
+
+                if (type === 'textarea') {
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            <textarea class="curation-textarea curation-input"
+                                      data-record-id="${recordId}"
+                                      data-field="${field}"
+                                      data-type="textarea">${value || ''}</textarea>
+                        </div>
+                    `;
+                }
+
+                if (type === 'text') {
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            <input class="curation-input"
+                                   type="text"
+                                   data-record-id="${recordId}"
+                                   data-field="${field}"
+                                   data-type="text"
+                                   value="${value || ''}">
+                        </div>
+                    `;
+                }
+
+                if (type === 'integer') {
+                    const min = fieldConfig.min !== undefined ? `min="${fieldConfig.min}"` : '';
+                    const max = fieldConfig.max !== undefined ? `max="${fieldConfig.max}"` : '';
+                    const current = value !== null && value !== undefined ? value : '';
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            <input class="curation-input"
+                                   type="number"
+                                   ${min}
+                                   ${max}
+                                   data-record-id="${recordId}"
+                                   data-field="${field}"
+                                   data-type="integer"
+                                   value="${current}">
+                        </div>
+                    `;
+                }
+
+                if (type === 'boolean') {
+                    const selected = value === true ? 'true' : value === false ? 'false' : '';
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            <select class="curation-select"
+                                    data-record-id="${recordId}"
+                                    data-field="${field}"
+                                    data-type="boolean">
+                                <option value="" ${selected === '' ? 'selected' : ''}>—</option>
+                                <option value="true" ${selected === 'true' ? 'selected' : ''}>Yes</option>
+                                <option value="false" ${selected === 'false' ? 'selected' : ''}>No</option>
+                            </select>
+                        </div>
+                    `;
+                }
+
+                if (type === 'enum') {
+                    const options = (fieldConfig.choices || []).map(choice => {
+                        const selected = value === choice ? 'selected' : '';
+                        return `<option value="${choice}" ${selected}>${choice}</option>`;
+                    }).join('');
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            <select class="curation-select"
+                                    data-record-id="${recordId}"
+                                    data-field="${field}"
+                                    data-type="enum">
+                                <option value="">—</option>
+                                ${options}
+                            </select>
+                        </div>
+                    `;
+                }
+
+                if (type === 'multienum') {
+                    const selectedValues = Array.isArray(value) ? value : [];
+                    const options = (fieldConfig.choices || []).map(choice => {
+                        const checked = selectedValues.includes(choice) ? 'checked' : '';
+                        return `
+                            <label class="curation-checkbox">
+                                <input type="checkbox"
+                                       class="curation-multienum"
+                                       data-record-id="${recordId}"
+                                       data-field="${field}"
+                                       data-type="multienum"
+                                       value="${choice}"
+                                       ${checked}>
+                                ${choice}
+                            </label>
+                        `;
+                    }).join('');
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            <div class="curation-multiselect">${options}</div>
+                        </div>
+                    `;
+                }
+
+                if (type === 'rating') {
+                    return `
+                        <div class="curation-field">
+                            <label class="curation-label">${label}</label>
+                            ${this.renderRating(recordId, field, value, fieldConfig.min || 1, fieldConfig.max || 5)}
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="curation-field">
+                        <label class="curation-label">${label}</label>
+                        <input class="curation-input"
+                               type="text"
+                               data-record-id="${recordId}"
+                               data-field="${field}"
+                               data-type="text"
+                               value="${value || ''}">
+                    </div>
+                `;
+            }
+
+            renderDecorators(recordId, decorators) {
+                if (!this.curationEnabled || !decorators || decorators.length === 0) return '';
+                const html = decorators.map(decorator => {
+                    if (decorator.type === 'thumbs') {
+                        return this.renderThumbs(recordId, decorator.field);
+                    }
+                    if (decorator.type === 'rating') {
+                        return this.renderRating(recordId, decorator.field, this.getAnnotationValue(recordId, decorator.field), decorator.min || 1, decorator.max || 5);
+                    }
+                    return '';
+                }).join('');
+
+                if (!html) return '';
+                return `<div class="curation-decorators">${html}</div>`;
+            }
+
+            renderThumbs(recordId, field) {
+                const value = this.getAnnotationValue(recordId, field);
+                const upActive = value === true ? 'active' : '';
+                const downActive = value === false ? 'active' : '';
+                return `
+                    <button class="curation-thumb ${upActive}" data-record-id="${recordId}" data-field="${field}" data-value="true">👍</button>
+                    <button class="curation-thumb ${downActive}" data-record-id="${recordId}" data-field="${field}" data-value="false">👎</button>
+                `;
+            }
+
+            renderRating(recordId, field, currentValue, min, max) {
+                const current = parseInt(currentValue, 10) || 0;
+                const stars = [];
+                for (let i = min; i <= max; i++) {
+                    const active = i <= current ? 'active' : '';
+                    stars.push(`
+                        <button class="curation-rating-star ${active}"
+                                data-record-id="${recordId}"
+                                data-field="${field}"
+                                data-value="${i}">
+                            ★
+                        </button>
+                    `);
+                }
+                return `<div class="curation-rating">${stars.join('')}</div>`;
             }
             
             // Build inverted index for fast text search
@@ -442,7 +2117,7 @@
                     console.log(`Processing facet: ${facet.field} (type: ${facet.type})`);
                     
                     this.originalData.forEach((item, idx) => {
-                        const value = item[facet.field];
+                        const value = this.getFacetValue(item, facet);
                         
                         if (value === undefined || value === null) {
                             console.warn(`Missing facet field ${facet.field} in item ${idx}:`, item);
@@ -508,23 +2183,262 @@
                         this.handleFacetToggle(e.target.closest('.facet-header'));
                     }
                 });
-                
-                // Add numeric input event listeners
-                document.addEventListener('input', (e) => {
-                    if (e.target.classList.contains('numeric-input')) {
-                        this.handleNumericInputChange(e.target);
-                    }
-                });
-                
-                document.addEventListener('change', (e) => {
-                    if (e.target.classList.contains('numeric-input')) {
-                        this.handleNumericInputChange(e.target);
-                    }
-                });
-                
+
                 document.getElementById('clearFilters').addEventListener('click', () => {
                     this.clearAllFilters();
                 });
+
+                // Range slider event handlers
+                this.setupRangeSliderEvents();
+
+                // Load more button (delegated since it's dynamically created)
+                document.addEventListener('click', (e) => {
+                    if (e.target.id === 'loadMoreBtn') {
+                        this.loadMore();
+                    }
+                    // Facet show more button
+                    if (e.target.classList.contains('facet-show-more')) {
+                        const field = e.target.dataset.field;
+                        if (this.expandedFacets.has(field)) {
+                            this.expandedFacets.delete(field);
+                        } else {
+                            this.expandedFacets.add(field);
+                        }
+                        // Re-render facets with cached counts
+                        if (this.currentFacetCounts) {
+                            this.renderFacets(this.currentFacetCounts);
+                        }
+                    }
+                    // Range slider clear button
+                    if (e.target.classList.contains('range-slider-clear')) {
+                        const field = e.target.dataset.field;
+                        delete this.currentFilters[field];
+                        this.search();
+                    }
+                });
+
+                const exportBtn = document.getElementById('exportAnnotations');
+                const importBtn = document.getElementById('importAnnotations');
+                const importFile = document.getElementById('importAnnotationsFile');
+                const usingNativeMenu = this.isNativeMenuEnabled();
+                if (exportBtn) {
+                    if (!usingNativeMenu) {
+                        exportBtn.addEventListener('click', () => this.exportAnnotations());
+                    } else {
+                        exportBtn.style.display = 'none';
+                    }
+                }
+                if (importBtn && importFile) {
+                    if (usingNativeMenu) {
+                        importBtn.style.display = 'none';
+                    } else if (window.__TAURI__ && window.__TAURI__.dialog && window.__TAURI__.fs) {
+                        importBtn.addEventListener('click', () => this.openAnnotationsDialog());
+                    } else {
+                        importBtn.addEventListener('click', () => importFile.click());
+                        importFile.addEventListener('change', (event) => this.handleImportFile(event));
+                    }
+                }
+
+                const openDatasetBtn = document.getElementById('openDataset');
+                if (openDatasetBtn) {
+                    if (usingNativeMenu) {
+                        openDatasetBtn.style.display = 'none';
+                    } else if (window.__TAURI__ && window.__TAURI__.dialog) {
+                        openDatasetBtn.addEventListener('click', () => this.openDatasetDialog());
+                    } else {
+                        openDatasetBtn.style.display = 'none';
+                    }
+                }
+
+                const openDatasetGithubBtn = document.getElementById('openDatasetGithub');
+                if (openDatasetGithubBtn) {
+                    if (usingNativeMenu) {
+                        openDatasetGithubBtn.style.display = 'none';
+                    } else if (window.__TAURI__) {
+                        openDatasetGithubBtn.addEventListener('click', () => this.openDatasetFromGithub());
+                    } else {
+                        openDatasetGithubBtn.style.display = 'none';
+                    }
+                }
+
+                if (usingNativeMenu) {
+                    this.setupTauriMenuListeners();
+                }
+
+                if (window.__TAURI__ && window.__TAURI__.event) {
+                    window.__TAURI__.event.listen('menu-open-recent', (event) => {
+                        const payload = event.payload || {};
+                        const kind = payload.kind;
+                        const path = payload.path;
+                        if (!path) return;
+                        if (kind === 'project') {
+                            localStorage.removeItem('linkml_browser_dataset_error');
+                            localStorage.setItem('linkml_browser_dataset_path', path);
+                            this.addRecentProject(path);
+                            window.location.reload();
+                        } else if (kind === 'evaluation') {
+                            this.loadEvaluationsFromPath(path);
+                        }
+                    });
+                }
+
+                document.addEventListener('click', (e) => {
+                    const link = e.target.closest('a');
+                    if (!link) return;
+                    const href = link.getAttribute('href');
+                    if (!href || href.startsWith('#')) return;
+                    if (window.__TAURI__ && window.__TAURI__.shell && window.__TAURI__.shell.open) {
+                        e.preventDefault();
+                        this.openLink(href);
+                    }
+                }, true);
+
+                document.addEventListener('click', (e) => {
+                    const actionBtn = e.target.closest('.curation-action');
+                    if (actionBtn) {
+                        const recordId = actionBtn.dataset.recordId;
+                        const action = actionBtn.dataset.action;
+                        this.handleCurationAction(action, recordId);
+                        return;
+                    }
+
+                    const thumbBtn = e.target.closest('.curation-thumb');
+                    if (thumbBtn) {
+                        const recordId = thumbBtn.dataset.recordId;
+                        const field = thumbBtn.dataset.field;
+                        const value = thumbBtn.dataset.value === 'true';
+                        const current = this.getAnnotationValue(recordId, field);
+                        const nextValue = current === value ? null : value;
+                        this.updateAnnotationField(recordId, field, nextValue);
+                        return;
+                    }
+
+                    const ratingBtn = e.target.closest('.curation-rating-star');
+                    if (ratingBtn) {
+                        const recordId = ratingBtn.dataset.recordId;
+                        const field = ratingBtn.dataset.field;
+                        const value = parseInt(ratingBtn.dataset.value, 10);
+                        const current = this.getAnnotationValue(recordId, field);
+                        const nextValue = current === value ? null : value;
+                        this.updateAnnotationField(recordId, field, nextValue);
+                    }
+                });
+
+                document.addEventListener('change', (e) => {
+                    if (e.target.classList.contains('curation-input') ||
+                        e.target.classList.contains('curation-select') ||
+                        e.target.classList.contains('curation-multienum')) {
+                        this.handleCurationInputChange(e.target);
+                    }
+                });
+            }
+
+            setupRangeSliderEvents() {
+                let activeHandle = null;
+                let activeWrapper = null;
+
+                const getValueFromPosition = (wrapper, clientX) => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const min = parseInt(wrapper.dataset.min);
+                    const max = parseInt(wrapper.dataset.max);
+                    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+                    return Math.round(min + percent * (max - min));
+                };
+
+                const updateSliderVisual = (wrapper, minVal, maxVal) => {
+                    const min = parseInt(wrapper.dataset.min);
+                    const max = parseInt(wrapper.dataset.max);
+                    const range = max - min;
+                    const minPercent = range > 0 ? ((minVal - min) / range) * 100 : 0;
+                    const maxPercent = range > 0 ? ((maxVal - min) / range) * 100 : 100;
+
+                    const rangeEl = wrapper.querySelector('.range-slider-range');
+                    const minHandle = wrapper.querySelector('.range-slider-handle-min');
+                    const maxHandle = wrapper.querySelector('.range-slider-handle-max');
+                    const minLabel = wrapper.parentElement.querySelector('.range-slider-label-min');
+                    const maxLabel = wrapper.parentElement.querySelector('.range-slider-label-max');
+
+                    rangeEl.style.left = minPercent + '%';
+                    rangeEl.style.right = (100 - maxPercent) + '%';
+                    minHandle.style.left = minPercent + '%';
+                    maxHandle.style.left = maxPercent + '%';
+                    minLabel.textContent = minVal;
+                    maxLabel.textContent = maxVal;
+                };
+
+                const handleMove = (clientX) => {
+                    if (!activeHandle || !activeWrapper) return;
+
+                    const field = activeWrapper.dataset.field;
+                    const min = parseInt(activeWrapper.dataset.min);
+                    const max = parseInt(activeWrapper.dataset.max);
+                    const handleType = activeHandle.dataset.type;
+                    const newValue = getValueFromPosition(activeWrapper, clientX);
+
+                    if (!this.currentFilters[field]) {
+                        this.currentFilters[field] = { min, max };
+                    }
+
+                    if (handleType === 'min') {
+                        this.currentFilters[field].min = Math.min(newValue, this.currentFilters[field].max);
+                    } else {
+                        this.currentFilters[field].max = Math.max(newValue, this.currentFilters[field].min);
+                    }
+
+                    updateSliderVisual(activeWrapper, this.currentFilters[field].min, this.currentFilters[field].max);
+                };
+
+                const handleEnd = () => {
+                    if (activeHandle && activeWrapper) {
+                        const field = activeWrapper.dataset.field;
+                        const min = parseInt(activeWrapper.dataset.min);
+                        const max = parseInt(activeWrapper.dataset.max);
+
+                        // If range is back to full, clear the filter
+                        if (this.currentFilters[field] &&
+                            this.currentFilters[field].min === min &&
+                            this.currentFilters[field].max === max) {
+                            delete this.currentFilters[field];
+                        }
+
+                        this.search();
+                    }
+                    activeHandle = null;
+                    activeWrapper = null;
+                };
+
+                // Mouse events
+                document.addEventListener('mousedown', (e) => {
+                    if (e.target.classList.contains('range-slider-handle')) {
+                        activeHandle = e.target;
+                        activeWrapper = e.target.closest('.range-slider-wrapper');
+                        e.preventDefault();
+                    }
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (activeHandle) {
+                        handleMove(e.clientX);
+                    }
+                });
+
+                document.addEventListener('mouseup', handleEnd);
+
+                // Touch events for mobile
+                document.addEventListener('touchstart', (e) => {
+                    if (e.target.classList.contains('range-slider-handle')) {
+                        activeHandle = e.target;
+                        activeWrapper = e.target.closest('.range-slider-wrapper');
+                    }
+                }, { passive: true });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (activeHandle && e.touches.length > 0) {
+                        handleMove(e.touches[0].clientX);
+                    }
+                }, { passive: true });
+
+                document.addEventListener('touchend', handleEnd);
             }
             
             handleFacetClick(facetItem) {
@@ -572,60 +2486,7 @@
                 document.getElementById('searchBox').value = '';
                 this.search();
             }
-            
-            handleNumericInputChange(element) {
-                const field = element.dataset.field;
-                const type = element.dataset.type;
-                const value = parseInt(element.value);
-                
-                if (!this.currentFilters[field]) {
-                    const facetConfig = this.schema.facets.find(f => f.field === field);
-                    if (!facetConfig || facetConfig.type !== 'integer') return;
-                    
-                    // Initialize with full range
-                    const counts = this.facetIndex[field] || new Map();
-                    const values = Array.from(counts.keys()).map(k => parseInt(k)).filter(v => !isNaN(v));
-                    if (values.length === 0) return;
-                    
-                    const minValue = Math.min(...values);
-                    const maxValue = Math.max(...values);
-                    this.currentFilters[field] = { min: minValue, max: maxValue };
-                }
-                
-                // Update the filter value
-                this.currentFilters[field][type] = value;
-                
-                // Ensure min doesn't exceed max
-                if (this.currentFilters[field].min > this.currentFilters[field].max) {
-                    if (type === 'min') {
-                        this.currentFilters[field].max = value;
-                    } else {
-                        this.currentFilters[field].min = value;
-                    }
-                }
-                
-                // Update UI to reflect the change
-                this.updateSliderUI(field);
-                
-                // Debounce the search
-                clearTimeout(this.sliderTimeout);
-                this.sliderTimeout = setTimeout(() => {
-                    this.search();
-                }, 150);
-            }
-            
-            updateSliderUI(field) {
-                const range = this.currentFilters[field];
-                if (!range) return;
-                
-                // Update all numeric inputs for this field
-                const inputs = document.querySelectorAll(`input[data-field="${field}"]`);
-                inputs.forEach(input => {
-                    const type = input.dataset.type;
-                    input.value = range[type];
-                });
-            }
-            
+
             search() {
                 const startTime = performance.now();
                 
@@ -718,16 +2579,26 @@
                 
                 // Get actual data objects
                 const filteredData = Array.from(resultIndices).map(idx => this.originalData[idx]);
-                
-                // Generate facet counts for current result set
-                const facetCounts = this.generateFacetCounts(resultIndices);
-                
+
+                // Store for pagination and reset displayed count on new search
+                this.currentFilteredData = filteredData;
+                this.displayedCount = this.itemsPerPage;
+
+                // Generate facet counts for current result set and cache them
+                this.currentFacetCounts = this.generateFacetCounts(resultIndices);
+                const facetCounts = this.currentFacetCounts;
+
                 const endTime = performance.now();
-                document.getElementById('performanceInfo').textContent = 
+                document.getElementById('performanceInfo').textContent =
                     `Search: ${(endTime - startTime).toFixed(2)}ms`;
-                
-                this.renderResults(filteredData);
+
+                this.renderResults();
                 this.renderFacets(facetCounts);
+            }
+
+            loadMore() {
+                this.displayedCount += this.itemsPerPage;
+                this.renderResults();
             }
             
             generateFacetCounts(resultIndices) {
@@ -738,7 +2609,7 @@
                     
                     resultIndices.forEach(idx => {
                         const item = this.originalData[idx];
-                        const value = item[facet.field];
+                        const value = this.getFacetValue(item, facet);
                         
                         // Skip if value is missing
                         if (value === undefined || value === null) {
@@ -769,13 +2640,16 @@
                 return counts;
             }
             
-            renderResults(items) {
+            renderResults() {
+                const items = this.currentFilteredData;
                 const resultsCount = document.getElementById('resultsCount');
                 const resultsGrid = document.getElementById('resultsGrid');
-                
-                resultsCount.textContent = `${items.length} items found`;
-                
-                if (items.length === 0) {
+
+                const totalCount = items.length;
+                const showingCount = Math.min(this.displayedCount, totalCount);
+                resultsCount.textContent = `Showing ${showingCount} of ${totalCount} items`;
+
+                if (totalCount === 0) {
                     resultsGrid.innerHTML = `
                         <div class="no-results">
                             <div style="font-size: 4rem; margin-bottom: 20px;">🔍</div>
@@ -785,16 +2659,20 @@
                     `;
                     return;
                 }
-                
+
+                // Only render up to displayedCount items
+                const itemsToRender = items.slice(0, this.displayedCount);
+
                 // Generic rendering based on schema displayFields
-                resultsGrid.innerHTML = items.map(item => {
+                let html = itemsToRender.map(item => {
+                    const recordId = this.getRecordId(item);
                     const fieldsHtml = this.schema.displayFields.map(fieldConfig => {
                         const value = item[fieldConfig.field];
-                        
+
                         if (value === undefined || value === null) {
                             return '';
                         }
-                        
+
                         if (fieldConfig.type === 'array') {
                             if (Array.isArray(value)) {
                                 return `
@@ -803,6 +2681,7 @@
                                         <div class="array-values">
                                             ${value.map(v => `<span class="array-item">${v}</span>`).join('')}
                                         </div>
+                                        ${recordId ? this.renderDecorators(recordId, fieldConfig.decorators) : ''}
                                     </div>
                                 `;
                             } else {
@@ -810,6 +2689,7 @@
                                     <div class="field-display">
                                         <span class="field-label">${fieldConfig.label}:</span>
                                         <span class="array-item">${value}</span>
+                                        ${recordId ? this.renderDecorators(recordId, fieldConfig.decorators) : ''}
                                     </div>
                                 `;
                             }
@@ -818,25 +2698,52 @@
                             if (fieldConfig.format === 'currency') {
                                 displayValue = `${value}`;
                             }
-                            
+
                             // Generic handling for CURIE type fields
                             if (fieldConfig.type === 'curie' && value.includes(':')) {
                                 // Create hyperlink for any CURIE (Compact URI)
                                 const curieUrl = `https://bioregistry.io/${value}`;
-                                displayValue = `<a href="${curieUrl}" target="_blank" style="color: #667eea; text-decoration: none; border-bottom: 1px dashed #667eea;">${displayValue}</a>`;
+                                displayValue = `<a href="${curieUrl}" target="_blank" rel="noopener noreferrer" class="linkml-link" style="color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981;">${displayValue}</a>`;
                             }
-                            
+
+                            // Generic handling for URL type fields
+                            if (fieldConfig.type === 'url' && value) {
+                                // Handle local URLs (starting with ../) or full URLs
+                                const isLocalUrl = value.startsWith('../');
+                                const target = isLocalUrl ? '_blank' : '_blank';  // Open both in new tab
+                                displayValue = `<a href="${value}" target="${target}" rel="noopener noreferrer" class="linkml-link" style="color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981;">${fieldConfig.label}</a>`;
+                            }
+
                             return `
                                 <div class="field-display">
                                     <span class="field-label">${fieldConfig.label}:</span>
                                     <span class="field-value">${displayValue}</span>
+                                    ${recordId ? this.renderDecorators(recordId, fieldConfig.decorators) : ''}
                                 </div>
                             `;
                         }
                     }).join('');
-                    
-                    return `<div class="result-card">${fieldsHtml}</div>`;
+
+                    const curationHtml = recordId && this.curationLayout === 'inline'
+                        ? this.renderCurationPanel(recordId)
+                        : '';
+                    return `<div class="result-card" data-record-id="${recordId || ''}">${fieldsHtml}${curationHtml}</div>`;
                 }).join('');
+
+                // Add "Load More" button if there are more items
+                if (this.displayedCount < totalCount) {
+                    const remaining = totalCount - this.displayedCount;
+                    html += `
+                        <div class="load-more-container">
+                            <button class="load-more-btn" id="loadMoreBtn">
+                                Load More Results
+                            </button>
+                            <div class="load-more-info">${remaining.toLocaleString()} more items available</div>
+                        </div>
+                    `;
+                }
+
+                resultsGrid.innerHTML = html;
             }
             
             renderFacets(facetCounts) {
@@ -852,47 +2759,52 @@
                     // Check if this facet is collapsed
                     const isCollapsed = this.collapsedFacets.has(facetConfig.field);
                     
-                    // Handle integer type facets with slider
+                    // Handle integer type facets with range slider
                     if (facetConfig.type === 'integer') {
-                        // Get min and max values
-                        const values = Array.from(counts.keys()).map(k => parseInt(k)).filter(v => !isNaN(v));
-                        if (values.length === 0) return '';
-                        
-                        const minValue = Math.min(...values);
-                        const maxValue = Math.max(...values);
-                        
-                        // Get current filter range
+                        // Get min and max from ORIGINAL data (facetIndex), not filtered counts
+                        const originalValues = this.facetIndex[facetConfig.field];
+                        if (!originalValues || originalValues.size === 0) return '';
+
+                        const allValues = Array.from(originalValues.keys()).map(k => parseInt(k)).filter(v => !isNaN(v));
+                        if (allValues.length === 0) return '';
+
+                        const minValue = Math.min(...allValues);
+                        const maxValue = Math.max(...allValues);
+
+                        // Get current filter range (defaults to full range)
                         const currentRange = this.currentFilters[facetConfig.field] || { min: minValue, max: maxValue };
-                        
+                        const hasActiveFilter = this.currentFilters[facetConfig.field] !== undefined;
+
+                        // Calculate handle positions as percentages
+                        const range = maxValue - minValue;
+                        const minPercent = range > 0 ? ((currentRange.min - minValue) / range) * 100 : 0;
+                        const maxPercent = range > 0 ? ((currentRange.max - minValue) / range) * 100 : 100;
+
                         return `
                             <div class="facet-group">
                                 <div class="facet-header" data-field="${facetConfig.field}">
-                                    <div class="facet-title">${facetConfig.label} (${minValue}-${maxValue})</div>
+                                    <div class="facet-title">${facetConfig.label}</div>
                                     <div class="facet-toggle ${isCollapsed ? 'collapsed' : ''}">▼</div>
                                 </div>
                                 <div class="facet-content ${isCollapsed ? 'collapsed' : ''}">
-                                    <div class="numeric-filter-container">
-                                        <div class="numeric-range-info">
-                                            Range: ${minValue} to ${maxValue}
+                                    <div class="numeric-filter-container" style="position: relative;">
+                                        ${hasActiveFilter ? `<button class="range-slider-clear" data-field="${facetConfig.field}">Clear</button>` : ''}
+                                        <div class="range-slider-wrapper"
+                                             data-field="${facetConfig.field}"
+                                             data-min="${minValue}"
+                                             data-max="${maxValue}">
+                                            <div class="range-slider-track"></div>
+                                            <div class="range-slider-range" style="left: ${minPercent}%; right: ${100 - maxPercent}%;"></div>
+                                            <div class="range-slider-handle range-slider-handle-min"
+                                                 data-type="min"
+                                                 style="left: ${minPercent}%;"></div>
+                                            <div class="range-slider-handle range-slider-handle-max"
+                                                 data-type="max"
+                                                 style="left: ${maxPercent}%;"></div>
                                         </div>
-                                        <div class="numeric-input-wrapper">
-                                            <input type="number" 
-                                                   class="numeric-input numeric-input-min" 
-                                                   min="${minValue}" 
-                                                   max="${maxValue}" 
-                                                   value="${currentRange.min}"
-                                                   placeholder="Min"
-                                                   data-field="${facetConfig.field}"
-                                                   data-type="min">
-                                            <span class="numeric-separator">-</span>
-                                            <input type="number" 
-                                                   class="numeric-input numeric-input-max" 
-                                                   min="${minValue}" 
-                                                   max="${maxValue}" 
-                                                   value="${currentRange.max}"
-                                                   placeholder="Max"
-                                                   data-field="${facetConfig.field}"
-                                                   data-type="max">
+                                        <div class="range-slider-labels">
+                                            <span class="range-slider-label range-slider-label-min">${currentRange.min}</span>
+                                            <span class="range-slider-label range-slider-label-max">${currentRange.max}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -911,21 +2823,27 @@
                                 return a.key.localeCompare(b.key);
                             }
                         });
-                    
-                    const itemsHtml = buckets.map(bucket => {
-                        const isActive = this.currentFilters[facetConfig.field] && 
+
+                    // Determine how many facet items to show
+                    const isExpanded = this.expandedFacets.has(facetConfig.field);
+                    const maxToShow = isExpanded ? buckets.length : this.facetItemsToShow;
+                    const bucketsToShow = buckets.slice(0, maxToShow);
+                    const hasMore = buckets.length > this.facetItemsToShow;
+
+                    const itemsHtml = bucketsToShow.map(bucket => {
+                        const isActive = this.currentFilters[facetConfig.field] &&
                                         this.currentFilters[facetConfig.field].includes(bucket.key);
-                        
+
                         // Create hyperlink for CURIE type facets
                         let displayValue = bucket.key;
                         if (facetConfig.type === 'curie' && bucket.key.includes(':')) {
                             const curieUrl = `https://bioregistry.io/${bucket.key}`;
-                            displayValue = `<a href="${curieUrl}" target="_blank" style="color: inherit; text-decoration: none;" onclick="event.stopPropagation();">${bucket.key}</a>`;
+                            displayValue = `<a href="${curieUrl}" target="_blank" rel="noopener noreferrer" class="linkml-link" style="color: inherit; text-decoration: none;" onclick="event.stopPropagation();">${bucket.key}</a>`;
                         }
-                        
+
                         return `
-                            <div class="facet-item ${isActive ? 'active' : ''}" 
-                                 data-filter="${facetConfig.field}" 
+                            <div class="facet-item ${isActive ? 'active' : ''}"
+                                 data-filter="${facetConfig.field}"
                                  data-value="${bucket.key}">
                                 <input type="checkbox" class="facet-checkbox" ${isActive ? 'checked' : ''}>
                                 <span>${displayValue}</span>
@@ -933,7 +2851,18 @@
                             </div>
                         `;
                     }).join('');
-                    
+
+                    // Add show more/less button if needed
+                    let showMoreBtn = '';
+                    if (hasMore) {
+                        const remaining = buckets.length - this.facetItemsToShow;
+                        showMoreBtn = `
+                            <button class="facet-show-more" data-field="${facetConfig.field}">
+                                ${isExpanded ? 'Show Less' : `Show ${remaining} More`}
+                            </button>
+                        `;
+                    }
+
                     return `
                         <div class="facet-group">
                             <div class="facet-header" data-field="${facetConfig.field}">
@@ -942,6 +2871,7 @@
                             </div>
                             <div class="facet-content ${isCollapsed ? 'collapsed' : ''}">
                                 ${itemsHtml}
+                                ${showMoreBtn}
                             </div>
                         </div>
                     `;
@@ -1012,12 +2942,71 @@
             ]
         };
 
+        function parseJsonArrayFromJs(text) {
+            const start = text.indexOf('[');
+            const end = text.lastIndexOf(']');
+            if (start === -1 || end === -1) {
+                throw new Error('Failed to find JSON array in data file.');
+            }
+            return JSON.parse(text.slice(start, end + 1));
+        }
+
+        function parseJsonObjectFromJs(text) {
+            const start = text.indexOf('{');
+            const end = text.lastIndexOf('}');
+            if (start === -1 || end === -1) {
+                throw new Error('Failed to find JSON object in schema file.');
+            }
+            return JSON.parse(text.slice(start, end + 1));
+        }
+
+        async function loadDatasetFromPath(datasetPath) {
+            const fsApi = window.__TAURI__ && window.__TAURI__.fs;
+            if (!fsApi || !fsApi.readTextFile) {
+                throw new Error('Tauri filesystem API unavailable.');
+            }
+            const pathApi = window.__TAURI__.path;
+            const join = pathApi && pathApi.join ? pathApi.join : null;
+            const dataPath = join ? await join(datasetPath, 'data.js') : `${datasetPath}/data.js`;
+            const schemaPath = join ? await join(datasetPath, 'schema.js') : `${datasetPath}/schema.js`;
+            const dataText = await fsApi.readTextFile(dataPath);
+            const schemaText = await fsApi.readTextFile(schemaPath);
+            return {
+                data: parseJsonArrayFromJs(dataText),
+                schema: parseJsonObjectFromJs(schemaText)
+            };
+        }
+
+        function deriveDefaultDatasetLabel() {
+            if (window.__TAURI__) {
+                const storedPath = localStorage.getItem('linkml_browser_dataset_path');
+                const storedError = localStorage.getItem('linkml_browser_dataset_error');
+                const fsAvailable = !!(window.__TAURI__.fs && window.__TAURI__.fs.readTextFile);
+                const fsLabel = fsAvailable ? 'fs:ok' : 'fs:missing';
+                if (storedError && storedPath) {
+                    return `Project failed: ${storedPath} (${storedError})`;
+                }
+                if (storedPath) {
+                    return `Project (stored): ${storedPath} (${fsLabel})`;
+                }
+                return `Project: bundled ui/ (${fsLabel})`;
+            }
+            return 'Project: bundled (static)';
+        }
+
+        function setDatasetLabel(label) {
+            const el = document.getElementById('datasetPath');
+            if (!el) return;
+            const finalLabel = label || deriveDefaultDatasetLabel();
+            el.textContent = finalLabel || '';
+        }
+
         // Initialize when ready
-        function initializeSearch() {
+        function initializeSearch(dataOverride, schemaOverride, datasetLabel) {
             console.log('🔍 Initializing search...');
             
-            const data = window.searchData || sampleData;
-            const schema = window.searchSchema || sampleSchema;
+            const data = dataOverride || window.searchData || sampleData;
+            const schema = schemaOverride || window.searchSchema || sampleSchema;
             
             // Set title and description from schema
             if (schema.title) {
@@ -1030,6 +3019,19 @@
             // Set search placeholder
             if (schema.searchPlaceholder) {
                 document.getElementById('searchBox').placeholder = schema.searchPlaceholder;
+            }
+
+            // Inject custom CSS if provided
+            if (schema.customCss) {
+                const styleEl = document.createElement('style');
+                styleEl.textContent = schema.customCss;
+                document.head.appendChild(styleEl);
+            }
+
+            if (datasetLabel) {
+                setDatasetLabel(datasetLabel);
+            } else {
+                setDatasetLabel();
             }
             
             console.log('📊 Data check:', {
@@ -1093,14 +3095,16 @@
             }
             
             // Check if facet fields exist in data
-            const missingFacetFields = schema.facets.filter(facet => !(facet.field in firstItem));
+            const missingFacetFields = schema.facets
+                .filter(facet => !facet.field.startsWith('__'))
+                .filter(facet => !(facet.field in firstItem));
             if (missingFacetFields.length > 0) {
                 console.warn('⚠️ Missing facet fields:', missingFacetFields.map(f => f.field));
             }
             
             try {
                 console.log('🚀 Creating search instance...');
-                new OptimizedFacetedSearch(data, schema);
+                window.searchApp = new OptimizedFacetedSearch(data, schema);
                 console.log('✅ Search initialized successfully');
             } catch (error) {
                 console.error('❌ Error initializing search:', error);
@@ -1112,39 +3116,39 @@
         console.log('🔧 Setting up event listeners...');
         
         let initializationAttempted = false;
-        
-        function tryInitialize() {
-            if (initializationAttempted) {
-                console.log('⏭️ Initialization already attempted, skipping');
-                return;
+
+        function setupStandardInitialization() {
+            function tryInitialize() {
+                if (initializationAttempted) {
+                    console.log('⏭️ Initialization already attempted, skipping');
+                    return;
+                }
+                
+                if (window.searchData && window.searchSchema) {
+                    console.log('✅ Both data and schema available, initializing...');
+                    initializationAttempted = true;
+                    initializeSearch();
+                } else {
+                    console.log('⏳ Still waiting...', { 
+                        hasData: !!window.searchData, 
+                        hasSchema: !!window.searchSchema 
+                    });
+                }
             }
-            
+
             if (window.searchData && window.searchSchema) {
-                console.log('✅ Both data and schema available, initializing...');
+                console.log('📦 Data already loaded, initializing immediately');
                 initializationAttempted = true;
                 initializeSearch();
-            } else {
-                console.log('⏳ Still waiting...', { 
-                    hasData: !!window.searchData, 
-                    hasSchema: !!window.searchSchema 
-                });
+                return;
             }
-        }
-        
-        // Check if already loaded
-        if (window.searchData && window.searchSchema) {
-            console.log('📦 Data already loaded, initializing immediately');
-            initializeSearch();
-        } else {
+
             console.log('⏳ Waiting for data to load...');
-            
-            // Listen for both data and schema ready events
             window.addEventListener('searchDataReady', () => {
                 console.log('📡 searchDataReady event received');
-                setTimeout(tryInitialize, 50); // Small delay to ensure both files are processed
+                setTimeout(tryInitialize, 50);
             });
-            
-            // Enhanced fallback with more debugging
+
             setTimeout(() => {
                 console.log('⏰ Timeout reached, checking status...');
                 console.log('Final state check:', {
@@ -1162,6 +3166,7 @@
                         tryInitialize();
                     } else if (!window.searchData && !window.searchSchema) {
                         console.log('📋 No external data found, using sample data');
+                        initializationAttempted = true;
                         initializeSearch();
                     } else {
                         console.error('❌ Partial data loading - check your file paths');
@@ -1172,7 +3177,41 @@
                         }
                     }
                 }
-            }, 2000); // Increased timeout
+            }, 2000);
+        }
+
+        async function initializeFromTauriDataset() {
+            if (!window.__TAURI__ || !window.__TAURI__.fs || !window.__TAURI__.fs.readTextFile) {
+                return false;
+            }
+            const datasetPath = localStorage.getItem('linkml_browser_dataset_path');
+            if (!datasetPath) {
+                return false;
+            }
+            try {
+                setDatasetLabel(`Project loading: ${datasetPath}`);
+                const { data, schema } = await loadDatasetFromPath(datasetPath);
+                localStorage.removeItem('linkml_browser_dataset_error');
+                initializationAttempted = true;
+                initializeSearch(data, schema, `Project: ${datasetPath}`);
+                return true;
+            } catch (error) {
+                console.error('Failed to load dataset from path', error);
+                const message = (error && error.message) ? error.message : 'load failed';
+                localStorage.setItem('linkml_browser_dataset_error', message.slice(0, 200));
+                setDatasetLabel(`Project failed: ${datasetPath}`);
+                return false;
+            }
+        }
+
+        if (window.__TAURI__) {
+            initializeFromTauriDataset().then((handled) => {
+                if (!handled) {
+                    setupStandardInitialization();
+                }
+            });
+        } else {
+            setupStandardInitialization();
         }
     </script>
 </body>

@@ -127,6 +127,9 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# Tauri build output
+ui/
+
 # mypy
 .mypy_cache/
 .dmypy.json
