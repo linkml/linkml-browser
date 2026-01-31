@@ -1,4 +1,8 @@
-# Tauri Desktop App Plan
+# MANTRA - Tauri Desktop App Plan
+
+**MANTRA**: Manual ANnotation Tool for Reviewing Agents
+
+A desktop application built on the LinkML Browser static site generator.
 
 ## Goals
 - Package the existing generated static UI as a desktop app without changing the default static-site workflow.
@@ -73,6 +77,7 @@ cargo tauri dev
 ### Desktop UX (End Users)
 - On launch, show a dataset chooser with:
   - “Open dataset folder…” (select a folder containing `index.html`, `data.js`, `schema.js`)
+  - “Open from GitHub…” (fetch raw `index.html`, `data.js`, `schema.js` from a repo/subdir)
   - A “Recent datasets” list stored in app config
 - If a recent dataset exists, allow one-click reopen.
 - Keep the binary usable without a terminal (double‑click experience).

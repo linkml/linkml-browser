@@ -138,7 +138,10 @@ window.searchSchema = {
     {
       "field": "term_id",
       "label": "GO ID",
-      "type": "curie"
+      "type": "curie",
+      "decorators": [
+        { "type": "thumbs", "field": "original_term_agreement" }
+      ]
     },
     {
       "field": "evidence_type",
@@ -211,12 +214,6 @@ window.searchSchema = {
   ],
   "curationFields": [
     {
-      "field": "evaluation_outcome",
-      "label": "Evaluation Outcome",
-      "type": "enum",
-      "choices": ["accept", "needs_revision", "reject"]
-    },
-    {
       "field": "agreement_level",
       "label": "Agreement Level",
       "type": "enum",
@@ -241,7 +238,7 @@ window.searchSchema = {
     "sections": [
       {
         "label": "Decision",
-        "fields": ["evaluation_outcome", "agreement_level", "evaluation_confidence"]
+        "fields": ["agreement_level", "evaluation_confidence"]
       },
       {
         "label": "Notes",

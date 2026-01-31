@@ -3,21 +3,15 @@ window.searchSchema = {
   "description": "Browse and filter classic literature",
   "searchPlaceholder": "Search...",
   "searchableFields": [
-    "genre",
     "publisher",
-    "id",
-    "title",
     "language",
     "author",
-    "description"
+    "description",
+    "id",
+    "title",
+    "genre"
   ],
   "facets": [
-    {
-      "field": "genre",
-      "label": "Genre",
-      "type": "array",
-      "sortBy": "count"
-    },
     {
       "field": "publisher",
       "label": "Publisher",
@@ -25,14 +19,8 @@ window.searchSchema = {
       "sortBy": "count"
     },
     {
-      "field": "id",
-      "label": "Id",
-      "type": "string",
-      "sortBy": "count"
-    },
-    {
-      "field": "title",
-      "label": "Title",
+      "field": "language",
+      "label": "Language",
       "type": "string",
       "sortBy": "count"
     },
@@ -40,6 +28,12 @@ window.searchSchema = {
       "field": "pages",
       "label": "Pages",
       "type": "integer",
+      "sortBy": "count"
+    },
+    {
+      "field": "rating",
+      "label": "Rating",
+      "type": "string",
       "sortBy": "count"
     },
     {
@@ -61,9 +55,21 @@ window.searchSchema = {
       "sortBy": "count"
     },
     {
-      "field": "rating",
-      "label": "Rating",
+      "field": "id",
+      "label": "Id",
       "type": "string",
+      "sortBy": "count"
+    },
+    {
+      "field": "title",
+      "label": "Title",
+      "type": "string",
+      "sortBy": "count"
+    },
+    {
+      "field": "genre",
+      "label": "Genre",
+      "type": "array",
       "sortBy": "count"
     }
   ],

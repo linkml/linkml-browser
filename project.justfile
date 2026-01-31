@@ -61,6 +61,22 @@ gallery-check:
 gallery-serve:
     uv run python -m http.server 8000 --directory docs
 
+# Filter ai-gene-review gallery data to specific taxa/statuses
+[group('gallery')]
+gallery-ai-gene-review-filter:
+    {{shebang}} scripts/filter_gallery.py \
+        --input ../ai-gene-review/app/data.js \
+        --output {{gallery_dir}}/ai-gene-review/data.js \
+        --status-allow COMPLETE,DRAFT,INITIALIZED \
+        --taxon-allow NCBITaxon:9606,NCBITaxon:6239 \
+        --max-records 500 \
+        --balance-by taxon_id
+
+# Validate gallery assets (index.html, data.js, schema.js)
+[group('gallery')]
+gallery-validate name:
+    {{shebang}} scripts/validate_gallery.py {{gallery_dir}}/{{name}}
+
 # ============== Tauri demo recipes ==============
 
 # Copy a gallery into ui/ for Tauri testing: just tauri-demo dismech
@@ -110,3 +126,8 @@ tauri-demo-link name="":
 [group('tauri')]
 tauri-dev:
     cargo tauri dev
+
+# Build release binaries (bundles) for the current platform
+[group('tauri')]
+tauri-build:
+    cargo tauri build

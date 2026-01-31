@@ -3,7 +3,10 @@ window.searchData = [
     "id": "book1",
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
-    "genre": ["Fiction", "Classic"],
+    "genre": [
+      "Fiction",
+      "Classic"
+    ],
     "publication_year": 1925,
     "publisher": "Charles Scribner's Sons",
     "pages": 180,
@@ -15,7 +18,11 @@ window.searchData = [
     "id": "book2",
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
-    "genre": ["Fiction", "Classic", "Drama"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Drama"
+    ],
     "publication_year": 1960,
     "publisher": "J.B. Lippincott & Co.",
     "pages": 281,
@@ -27,7 +34,11 @@ window.searchData = [
     "id": "book3",
     "title": "1984",
     "author": "George Orwell",
-    "genre": ["Fiction", "Dystopian", "Political"],
+    "genre": [
+      "Fiction",
+      "Dystopian",
+      "Political"
+    ],
     "publication_year": 1949,
     "publisher": "Secker & Warburg",
     "pages": 328,
@@ -39,7 +50,11 @@ window.searchData = [
     "id": "book4",
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
-    "genre": ["Fiction", "Romance", "Classic"],
+    "genre": [
+      "Fiction",
+      "Romance",
+      "Classic"
+    ],
     "publication_year": 1813,
     "publisher": "T. Egerton",
     "pages": 432,
@@ -51,7 +66,10 @@ window.searchData = [
     "id": "book5",
     "title": "The Catcher in the Rye",
     "author": "J.D. Salinger",
-    "genre": ["Fiction", "Coming-of-age"],
+    "genre": [
+      "Fiction",
+      "Coming-of-age"
+    ],
     "publication_year": 1951,
     "publisher": "Little, Brown and Company",
     "pages": 277,
@@ -63,7 +81,11 @@ window.searchData = [
     "id": "book6",
     "title": "One Hundred Years of Solitude",
     "author": "Gabriel Garcia Marquez",
-    "genre": ["Fiction", "Magical Realism", "Classic"],
+    "genre": [
+      "Fiction",
+      "Magical Realism",
+      "Classic"
+    ],
     "publication_year": 1967,
     "publisher": "Harper & Row",
     "pages": 417,
@@ -75,7 +97,11 @@ window.searchData = [
     "id": "book7",
     "title": "The Lord of the Rings",
     "author": "J.R.R. Tolkien",
-    "genre": ["Fiction", "Fantasy", "Adventure"],
+    "genre": [
+      "Fiction",
+      "Fantasy",
+      "Adventure"
+    ],
     "publication_year": 1954,
     "publisher": "Allen & Unwin",
     "pages": 1178,
@@ -87,7 +113,11 @@ window.searchData = [
     "id": "book8",
     "title": "Crime and Punishment",
     "author": "Fyodor Dostoevsky",
-    "genre": ["Fiction", "Classic", "Psychological"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Psychological"
+    ],
     "publication_year": 1866,
     "publisher": "The Russian Messenger",
     "pages": 671,
@@ -99,7 +129,11 @@ window.searchData = [
     "id": "book9",
     "title": "The Hitchhiker's Guide to the Galaxy",
     "author": "Douglas Adams",
-    "genre": ["Fiction", "Science Fiction", "Comedy"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Comedy"
+    ],
     "publication_year": 1979,
     "publisher": "Pan Books",
     "pages": 193,
@@ -111,7 +145,11 @@ window.searchData = [
     "id": "book10",
     "title": "Brave New World",
     "author": "Aldous Huxley",
-    "genre": ["Fiction", "Dystopian", "Science Fiction"],
+    "genre": [
+      "Fiction",
+      "Dystopian",
+      "Science Fiction"
+    ],
     "publication_year": 1932,
     "publisher": "Chatto & Windus",
     "pages": 311,
@@ -123,7 +161,11 @@ window.searchData = [
     "id": "book11",
     "title": "The Brothers Karamazov",
     "author": "Fyodor Dostoevsky",
-    "genre": ["Fiction", "Classic", "Philosophical"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Philosophical"
+    ],
     "publication_year": 1880,
     "publisher": "The Russian Messenger",
     "pages": 796,
@@ -135,7 +177,11 @@ window.searchData = [
     "id": "book12",
     "title": "Dune",
     "author": "Frank Herbert",
-    "genre": ["Fiction", "Science Fiction", "Adventure"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Adventure"
+    ],
     "publication_year": 1965,
     "publisher": "Chilton Books",
     "pages": 412,
@@ -147,7 +193,12 @@ window.searchData = [
     "id": "book13",
     "title": "Jane Eyre",
     "author": "Charlotte Bronte",
-    "genre": ["Fiction", "Romance", "Classic", "Gothic"],
+    "genre": [
+      "Fiction",
+      "Romance",
+      "Classic",
+      "Gothic"
+    ],
     "publication_year": 1847,
     "publisher": "Smith, Elder & Co.",
     "pages": 500,
@@ -159,7 +210,12 @@ window.searchData = [
     "id": "book14",
     "title": "Wuthering Heights",
     "author": "Emily Bronte",
-    "genre": ["Fiction", "Romance", "Classic", "Gothic"],
+    "genre": [
+      "Fiction",
+      "Romance",
+      "Classic",
+      "Gothic"
+    ],
     "publication_year": 1847,
     "publisher": "Thomas Cautley Newby",
     "pages": 416,
@@ -171,7 +227,12 @@ window.searchData = [
     "id": "book15",
     "title": "The Picture of Dorian Gray",
     "author": "Oscar Wilde",
-    "genre": ["Fiction", "Classic", "Gothic", "Philosophical"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Gothic",
+      "Philosophical"
+    ],
     "publication_year": 1890,
     "publisher": "Lippincott's Monthly Magazine",
     "pages": 254,
@@ -183,7 +244,11 @@ window.searchData = [
     "id": "book16",
     "title": "Moby-Dick",
     "author": "Herman Melville",
-    "genre": ["Fiction", "Classic", "Adventure"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Adventure"
+    ],
     "publication_year": 1851,
     "publisher": "Harper & Brothers",
     "pages": 635,
@@ -195,7 +260,11 @@ window.searchData = [
     "id": "book17",
     "title": "War and Peace",
     "author": "Leo Tolstoy",
-    "genre": ["Fiction", "Classic", "Historical"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Historical"
+    ],
     "publication_year": 1869,
     "publisher": "The Russian Messenger",
     "pages": 1225,
@@ -207,7 +276,12 @@ window.searchData = [
     "id": "book18",
     "title": "Anna Karenina",
     "author": "Leo Tolstoy",
-    "genre": ["Fiction", "Classic", "Romance", "Drama"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Romance",
+      "Drama"
+    ],
     "publication_year": 1877,
     "publisher": "The Russian Messenger",
     "pages": 864,
@@ -219,7 +293,11 @@ window.searchData = [
     "id": "book19",
     "title": "The Stranger",
     "author": "Albert Camus",
-    "genre": ["Fiction", "Philosophical", "Existentialist"],
+    "genre": [
+      "Fiction",
+      "Philosophical",
+      "Existentialist"
+    ],
     "publication_year": 1942,
     "publisher": "Gallimard",
     "pages": 123,
@@ -231,7 +309,11 @@ window.searchData = [
     "id": "book20",
     "title": "The Metamorphosis",
     "author": "Franz Kafka",
-    "genre": ["Fiction", "Surrealist", "Existentialist"],
+    "genre": [
+      "Fiction",
+      "Surrealist",
+      "Existentialist"
+    ],
     "publication_year": 1915,
     "publisher": "Kurt Wolff Verlag",
     "pages": 55,
@@ -243,7 +325,12 @@ window.searchData = [
     "id": "book21",
     "title": "Don Quixote",
     "author": "Miguel de Cervantes",
-    "genre": ["Fiction", "Classic", "Comedy", "Adventure"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Comedy",
+      "Adventure"
+    ],
     "publication_year": 1605,
     "publisher": "Francisco de Robles",
     "pages": 1023,
@@ -255,7 +342,12 @@ window.searchData = [
     "id": "book22",
     "title": "Frankenstein",
     "author": "Mary Shelley",
-    "genre": ["Fiction", "Gothic", "Science Fiction", "Horror"],
+    "genre": [
+      "Fiction",
+      "Gothic",
+      "Science Fiction",
+      "Horror"
+    ],
     "publication_year": 1818,
     "publisher": "Lackington, Hughes, Harding, Mavor & Jones",
     "pages": 280,
@@ -267,7 +359,11 @@ window.searchData = [
     "id": "book23",
     "title": "Dracula",
     "author": "Bram Stoker",
-    "genre": ["Fiction", "Gothic", "Horror"],
+    "genre": [
+      "Fiction",
+      "Gothic",
+      "Horror"
+    ],
     "publication_year": 1897,
     "publisher": "Archibald Constable and Company",
     "pages": 418,
@@ -279,7 +375,12 @@ window.searchData = [
     "id": "book24",
     "title": "The Count of Monte Cristo",
     "author": "Alexandre Dumas",
-    "genre": ["Fiction", "Classic", "Adventure", "Historical"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Adventure",
+      "Historical"
+    ],
     "publication_year": 1844,
     "publisher": "Journal des Debats",
     "pages": 1276,
@@ -291,7 +392,12 @@ window.searchData = [
     "id": "book25",
     "title": "Les Miserables",
     "author": "Victor Hugo",
-    "genre": ["Fiction", "Classic", "Historical", "Drama"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Historical",
+      "Drama"
+    ],
     "publication_year": 1862,
     "publisher": "A. Lacroix, Verboeckhoven & Cie",
     "pages": 1462,
@@ -303,7 +409,11 @@ window.searchData = [
     "id": "book26",
     "title": "The Grapes of Wrath",
     "author": "John Steinbeck",
-    "genre": ["Fiction", "Classic", "Historical"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Historical"
+    ],
     "publication_year": 1939,
     "publisher": "The Viking Press",
     "pages": 464,
@@ -315,7 +425,11 @@ window.searchData = [
     "id": "book27",
     "title": "Of Mice and Men",
     "author": "John Steinbeck",
-    "genre": ["Fiction", "Classic", "Drama"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Drama"
+    ],
     "publication_year": 1937,
     "publisher": "Covici Friede",
     "pages": 107,
@@ -327,7 +441,12 @@ window.searchData = [
     "id": "book28",
     "title": "Slaughterhouse-Five",
     "author": "Kurt Vonnegut",
-    "genre": ["Fiction", "Science Fiction", "Satire", "Anti-war"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Satire",
+      "Anti-war"
+    ],
     "publication_year": 1969,
     "publisher": "Delacorte",
     "pages": 275,
@@ -339,7 +458,11 @@ window.searchData = [
     "id": "book29",
     "title": "Catch-22",
     "author": "Joseph Heller",
-    "genre": ["Fiction", "Satire", "Anti-war"],
+    "genre": [
+      "Fiction",
+      "Satire",
+      "Anti-war"
+    ],
     "publication_year": 1961,
     "publisher": "Simon & Schuster",
     "pages": 453,
@@ -351,7 +474,11 @@ window.searchData = [
     "id": "book30",
     "title": "The Handmaid's Tale",
     "author": "Margaret Atwood",
-    "genre": ["Fiction", "Dystopian", "Feminist"],
+    "genre": [
+      "Fiction",
+      "Dystopian",
+      "Feminist"
+    ],
     "publication_year": 1985,
     "publisher": "McClelland and Stewart",
     "pages": 311,
@@ -363,7 +490,11 @@ window.searchData = [
     "id": "book31",
     "title": "Beloved",
     "author": "Toni Morrison",
-    "genre": ["Fiction", "Historical", "Gothic"],
+    "genre": [
+      "Fiction",
+      "Historical",
+      "Gothic"
+    ],
     "publication_year": 1987,
     "publisher": "Alfred A. Knopf",
     "pages": 324,
@@ -375,7 +506,11 @@ window.searchData = [
     "id": "book32",
     "title": "The Color Purple",
     "author": "Alice Walker",
-    "genre": ["Fiction", "Drama", "Epistolary"],
+    "genre": [
+      "Fiction",
+      "Drama",
+      "Epistolary"
+    ],
     "publication_year": 1982,
     "publisher": "Harcourt Brace Jovanovich",
     "pages": 295,
@@ -387,7 +522,11 @@ window.searchData = [
     "id": "book33",
     "title": "A Tale of Two Cities",
     "author": "Charles Dickens",
-    "genre": ["Fiction", "Classic", "Historical"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Historical"
+    ],
     "publication_year": 1859,
     "publisher": "Chapman & Hall",
     "pages": 489,
@@ -399,7 +538,11 @@ window.searchData = [
     "id": "book34",
     "title": "Great Expectations",
     "author": "Charles Dickens",
-    "genre": ["Fiction", "Classic", "Coming-of-age"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Coming-of-age"
+    ],
     "publication_year": 1861,
     "publisher": "Chapman & Hall",
     "pages": 505,
@@ -411,7 +554,11 @@ window.searchData = [
     "id": "book35",
     "title": "Oliver Twist",
     "author": "Charles Dickens",
-    "genre": ["Fiction", "Classic", "Coming-of-age"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Coming-of-age"
+    ],
     "publication_year": 1838,
     "publisher": "Richard Bentley",
     "pages": 608,
@@ -423,7 +570,12 @@ window.searchData = [
     "id": "book36",
     "title": "The Odyssey",
     "author": "Homer",
-    "genre": ["Fiction", "Classic", "Epic", "Mythology"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Epic",
+      "Mythology"
+    ],
     "publication_year": -700,
     "publisher": "Ancient Greece",
     "pages": 541,
@@ -435,7 +587,12 @@ window.searchData = [
     "id": "book37",
     "title": "The Iliad",
     "author": "Homer",
-    "genre": ["Fiction", "Classic", "Epic", "Mythology"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Epic",
+      "Mythology"
+    ],
     "publication_year": -750,
     "publisher": "Ancient Greece",
     "pages": 683,
@@ -447,7 +604,12 @@ window.searchData = [
     "id": "book38",
     "title": "The Divine Comedy",
     "author": "Dante Alighieri",
-    "genre": ["Fiction", "Classic", "Epic", "Religious"],
+    "genre": [
+      "Fiction",
+      "Classic",
+      "Epic",
+      "Religious"
+    ],
     "publication_year": 1320,
     "publisher": "Medieval Italy",
     "pages": 798,
@@ -459,7 +621,11 @@ window.searchData = [
     "id": "book39",
     "title": "The Trial",
     "author": "Franz Kafka",
-    "genre": ["Fiction", "Surrealist", "Existentialist"],
+    "genre": [
+      "Fiction",
+      "Surrealist",
+      "Existentialist"
+    ],
     "publication_year": 1925,
     "publisher": "Verlag Die Schmiede",
     "pages": 255,
@@ -471,7 +637,11 @@ window.searchData = [
     "id": "book40",
     "title": "Fahrenheit 451",
     "author": "Ray Bradbury",
-    "genre": ["Fiction", "Dystopian", "Science Fiction"],
+    "genre": [
+      "Fiction",
+      "Dystopian",
+      "Science Fiction"
+    ],
     "publication_year": 1953,
     "publisher": "Ballantine Books",
     "pages": 158,
@@ -483,7 +653,11 @@ window.searchData = [
     "id": "book41",
     "title": "The Road",
     "author": "Cormac McCarthy",
-    "genre": ["Fiction", "Post-apocalyptic", "Drama"],
+    "genre": [
+      "Fiction",
+      "Post-apocalyptic",
+      "Drama"
+    ],
     "publication_year": 2006,
     "publisher": "Alfred A. Knopf",
     "pages": 287,
@@ -495,7 +669,11 @@ window.searchData = [
     "id": "book42",
     "title": "Blood Meridian",
     "author": "Cormac McCarthy",
-    "genre": ["Fiction", "Western", "Historical"],
+    "genre": [
+      "Fiction",
+      "Western",
+      "Historical"
+    ],
     "publication_year": 1985,
     "publisher": "Random House",
     "pages": 337,
@@ -507,7 +685,11 @@ window.searchData = [
     "id": "book43",
     "title": "Neuromancer",
     "author": "William Gibson",
-    "genre": ["Fiction", "Science Fiction", "Cyberpunk"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Cyberpunk"
+    ],
     "publication_year": 1984,
     "publisher": "Ace",
     "pages": 271,
@@ -519,7 +701,11 @@ window.searchData = [
     "id": "book44",
     "title": "Snow Crash",
     "author": "Neal Stephenson",
-    "genre": ["Fiction", "Science Fiction", "Cyberpunk"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Cyberpunk"
+    ],
     "publication_year": 1992,
     "publisher": "Bantam Books",
     "pages": 440,
@@ -531,7 +717,10 @@ window.searchData = [
     "id": "book45",
     "title": "Foundation",
     "author": "Isaac Asimov",
-    "genre": ["Fiction", "Science Fiction"],
+    "genre": [
+      "Fiction",
+      "Science Fiction"
+    ],
     "publication_year": 1951,
     "publisher": "Gnome Press",
     "pages": 244,
@@ -543,7 +732,10 @@ window.searchData = [
     "id": "book46",
     "title": "I, Robot",
     "author": "Isaac Asimov",
-    "genre": ["Fiction", "Science Fiction"],
+    "genre": [
+      "Fiction",
+      "Science Fiction"
+    ],
     "publication_year": 1950,
     "publisher": "Gnome Press",
     "pages": 224,
@@ -555,7 +747,10 @@ window.searchData = [
     "id": "book47",
     "title": "2001: A Space Odyssey",
     "author": "Arthur C. Clarke",
-    "genre": ["Fiction", "Science Fiction"],
+    "genre": [
+      "Fiction",
+      "Science Fiction"
+    ],
     "publication_year": 1968,
     "publisher": "New American Library",
     "pages": 297,
@@ -567,7 +762,11 @@ window.searchData = [
     "id": "book48",
     "title": "Ender's Game",
     "author": "Orson Scott Card",
-    "genre": ["Fiction", "Science Fiction", "Military"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Military"
+    ],
     "publication_year": 1985,
     "publisher": "Tor Books",
     "pages": 324,
@@ -579,7 +778,11 @@ window.searchData = [
     "id": "book49",
     "title": "The Left Hand of Darkness",
     "author": "Ursula K. Le Guin",
-    "genre": ["Fiction", "Science Fiction", "Feminist"],
+    "genre": [
+      "Fiction",
+      "Science Fiction",
+      "Feminist"
+    ],
     "publication_year": 1969,
     "publisher": "Ace Books",
     "pages": 304,
@@ -591,7 +794,11 @@ window.searchData = [
     "id": "book50",
     "title": "A Wizard of Earthsea",
     "author": "Ursula K. Le Guin",
-    "genre": ["Fiction", "Fantasy", "Coming-of-age"],
+    "genre": [
+      "Fiction",
+      "Fantasy",
+      "Coming-of-age"
+    ],
     "publication_year": 1968,
     "publisher": "Parnassus Press",
     "pages": 183,

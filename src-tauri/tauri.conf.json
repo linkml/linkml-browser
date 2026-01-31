@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "LinkML Browser",
+  "productName": "MANTRA",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "org.linkml.mantra",
   "build": {
     "frontendDist": "../ui"
   },
@@ -10,7 +10,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "LinkML Browser",
+        "title": "MANTRA - Manual ANnotation Tool for Reviewing Agents",
         "width": 800,
         "height": 600,
         "resizable": true,
