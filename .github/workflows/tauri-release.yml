@@ -47,7 +47,7 @@ jobs:
         run: bash scripts/prepare_tauri_ui.sh
 
       - name: Build and release
-        uses: tauri-apps/tauri-action@v1
+        uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # macOS signing (optional)
