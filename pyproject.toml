@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Chris Mungall", email = "cjm@berkeleybop.org" }
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "linkml>=1.9.3",
     "linkml-store>=0.2.11",
