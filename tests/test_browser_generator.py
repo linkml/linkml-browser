@@ -5,7 +5,12 @@ from pathlib import Path
 
 import pytest
 
-from linkml_browser.core import BrowserGenerator, load_json_data
+from linkml_browser.core import (
+    BrowserGenerator,
+    extract_linkml_elements,
+    get_linkml_browser_schema,
+    load_json_data,
+)
 
 
 class TestBrowserGenerator:
@@ -173,8 +178,172 @@ class TestBrowserGenerator:
         """Test the load_json_data utility function."""
         test_file = Path(__file__).parent / "test_data.json"
         data = load_json_data(test_file)
-        
+
         assert isinstance(data, list)
         assert len(data) == 50
         assert data[0]["title"] == "The Great Gatsby"
         assert data[1]["author"] == "Harper Lee"
+
+
+class TestLinkMLSchemaExtraction:
+    """Test LinkML schema extraction functionality."""
+
+    @pytest.fixture
+    def minimal_schema_path(self, tmp_path):
+        """Create a minimal LinkML schema for testing."""
+        schema_content = """
+id: https://example.org/test
+name: test_schema
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://example.org/
+
+default_range: string
+
+subsets:
+  test_subset:
+    description: A test subset
+
+enums:
+  StatusEnum:
+    description: Status values
+    permissible_values:
+      active:
+        description: Active status
+      inactive:
+        description: Inactive status
+
+slots:
+  id:
+    identifier: true
+    range: string
+  name:
+    title: Name
+    description: The name of the entity
+    required: true
+    slot_uri: ex:name
+    in_subset:
+      - test_subset
+  status:
+    range: StatusEnum
+  tags:
+    multivalued: true
+    range: string
+
+classes:
+  NamedThing:
+    abstract: true
+    description: A generic named thing
+    slots:
+      - id
+      - name
+  Person:
+    is_a: NamedThing
+    description: A person
+    class_uri: ex:Person
+    slots:
+      - status
+      - tags
+"""
+        schema_file = tmp_path / "test_schema.yaml"
+        schema_file.write_text(schema_content)
+        return schema_file
+
+    def test_extract_linkml_elements(self, minimal_schema_path):
+        """Test extracting elements from a LinkML schema."""
+        elements = extract_linkml_elements(minimal_schema_path)
+
+        assert isinstance(elements, list)
+        assert len(elements) > 0
+
+        # Check we have all three element types
+        types = {el["type"] for el in elements}
+        assert "slot_definition" in types
+        assert "class_definition" in types
+        assert "enum_definition" in types
+
+        # Find specific elements
+        slots = [el for el in elements if el["type"] == "slot_definition"]
+        classes = [el for el in elements if el["type"] == "class_definition"]
+        enums = [el for el in elements if el["type"] == "enum_definition"]
+
+        # Check slot extraction
+        name_slot = next((s for s in slots if s["name"] == "name"), None)
+        assert name_slot is not None
+        assert name_slot["title"] == "Name"
+        assert name_slot["description"] == "The name of the entity"
+        assert name_slot["required"] is True
+        assert name_slot["uri"] == "ex:name"
+        assert name_slot["url"] == "https://example.org/name"  # Expanded URI
+        assert "test_subset" in name_slot["in_subset"]
+        # Check classes field (slots should list which classes use them)
+        assert "classes" in name_slot
+        assert "NamedThing" in name_slot["classes"]
+        assert "Person" in name_slot["classes"]
+
+        # Check class extraction
+        person_class = next((c for c in classes if c["name"] == "Person"), None)
+        assert person_class is not None
+        assert person_class["is_a"] == "NamedThing"
+        assert person_class["description"] == "A person"
+        assert person_class["uri"] == "ex:Person"
+        assert person_class["url"] == "https://example.org/Person"  # Expanded URI
+        assert "status" in person_class["slots"]
+        assert "tags" in person_class["slots"]
+
+        # Check abstract class
+        named_thing = next((c for c in classes if c["name"] == "NamedThing"), None)
+        assert named_thing is not None
+        assert named_thing["abstract"] is True
+
+        # Check enum extraction
+        status_enum = next((e for e in enums if e["name"] == "StatusEnum"), None)
+        assert status_enum is not None
+        assert status_enum["description"] == "Status values"
+        assert "active" in status_enum["permissible_values"]
+        assert "inactive" in status_enum["permissible_values"]
+
+    def test_get_linkml_browser_schema(self):
+        """Test getting the browser schema for LinkML."""
+        schema = get_linkml_browser_schema()
+
+        assert schema["title"] == "Schema Browser"
+        assert "searchableFields" in schema
+        assert "name" in schema["searchableFields"]
+        assert "facets" in schema
+        assert "displayFields" in schema
+
+        # Check custom title override
+        custom_schema = get_linkml_browser_schema(title="Custom Title", description="Custom desc")
+        assert custom_schema["title"] == "Custom Title"
+        assert custom_schema["description"] == "Custom desc"
+
+    def test_deploy_schema_integration(self, minimal_schema_path, temp_output_dir):
+        """Test the full deploy-schema workflow."""
+        elements = extract_linkml_elements(minimal_schema_path)
+        browser_schema = get_linkml_browser_schema(title="Test Schema Browser")
+
+        generator = BrowserGenerator(elements, browser_schema)
+        generator.generate(temp_output_dir, force=True)
+
+        # Check output files
+        assert (temp_output_dir / "index.html").exists()
+        assert (temp_output_dir / "data.js").exists()
+        assert (temp_output_dir / "schema.js").exists()
+
+        # Check data.js content
+        data_js = (temp_output_dir / "data.js").read_text()
+        assert "slot_definition" in data_js
+        assert "class_definition" in data_js
+        assert "enum_definition" in data_js
+
+        # Check schema.js content
+        schema_js = (temp_output_dir / "schema.js").read_text()
+        assert "Test Schema Browser" in schema_js
+        assert "Element Type" in schema_js
+
+    @pytest.fixture
+    def temp_output_dir(self):
+        """Create temporary output directory."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            yield Path(temp_dir)
