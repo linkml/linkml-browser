@@ -5,7 +5,7 @@ import shutil
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Union
 
-from linkml_runtime.utils.schemaview import SchemaView
+from linkml_runtime.utils.schemaview import SchemaView  # type: ignore[import-untyped]
 
 
 class BrowserGenerator:

@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 import typer
 from typing_extensions import Annotated
@@ -144,7 +144,7 @@ def deploy_schema(
     elements = extract_linkml_elements(schema_files)
 
     # Count by type
-    type_counts = {}
+    type_counts: Dict[str, int] = {}
     for el in elements:
         t = el["type"]
         type_counts[t] = type_counts.get(t, 0) + 1
