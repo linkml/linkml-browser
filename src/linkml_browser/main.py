@@ -2,12 +2,19 @@
 
 import json
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 import typer
 from typing_extensions import Annotated
 
-from .core import BrowserGenerator, load_json_data, load_schema, save_schema
+from .core import (
+    BrowserGenerator,
+    extract_linkml_elements,
+    get_linkml_browser_schema,
+    load_json_data,
+    load_schema,
+    save_schema,
+)
 
 app = typer.Typer(help="LinkML Browser: Generate standalone faceted browsers for tabular JSON datasets")
 
@@ -108,6 +115,63 @@ def init_schema(
     typer.echo(f"\n✅ Schema written to: {output_file}")
     typer.echo("Edit this file to customize facets, search fields, and display options.")
     typer.echo(f"Then run: linkml-browser deploy {data_file} output/ --schema {output_file}")
+
+
+@app.command()
+def deploy_schema(
+    schema_files: Annotated[List[Path], typer.Argument(help="Path(s) to LinkML schema YAML file(s)")],
+    output_dir: Annotated[Path, typer.Argument(help="Output directory for the browser")],
+    title: Annotated[Optional[str], typer.Option("--title", "-t", help="Browser title (defaults to schema name)")] = None,
+    description: Annotated[Optional[str], typer.Option("--description", "-d", help="Browser description")] = None,
+    force: Annotated[bool, typer.Option("--force", "-f", help="Overwrite existing output directory")] = False,
+):
+    """Deploy a faceted browser for LinkML schema(s).
+
+    Extracts classes, slots, and enums from the schema(s) and creates a browser
+    where each element is a browsable item. Multiple schemas will be merged.
+    """
+    # Validate input files
+    for schema_file in schema_files:
+        if not schema_file.exists():
+            typer.echo(f"Error: Schema file '{schema_file}' not found", err=True)
+            raise typer.Exit(1)
+
+    # Extract elements from LinkML schema(s)
+    if len(schema_files) == 1:
+        typer.echo(f"Loading LinkML schema from {schema_files[0]}...")
+    else:
+        typer.echo(f"Loading and merging {len(schema_files)} LinkML schemas...")
+    elements = extract_linkml_elements(schema_files)
+
+    # Count by type
+    type_counts = {}
+    for el in elements:
+        t = el["type"]
+        type_counts[t] = type_counts.get(t, 0) + 1
+
+    typer.echo(f"Extracted {len(elements)} elements:")
+    for t, count in sorted(type_counts.items()):
+        typer.echo(f"  - {t}: {count}")
+
+    # Get browser schema with optional title override
+    if title:
+        browser_title = title
+    elif len(schema_files) == 1:
+        browser_title = f"{schema_files[0].stem} Schema Browser"
+    else:
+        browser_title = "Combined Schema Browser"
+    browser_schema = get_linkml_browser_schema(browser_title, description)
+
+    # Generate browser
+    generator = BrowserGenerator(elements, browser_schema)
+    generator.generate(output_dir, force)
+
+    typer.echo("Copied index.html")
+    typer.echo(f"Created data.js with {len(elements)} elements")
+    typer.echo("Created schema.js")
+
+    typer.echo(f"\n✅ Browser deployed to: {output_dir}")
+    typer.echo(f"To view, open: {output_dir / 'index.html'}")
 
 
 def main():
